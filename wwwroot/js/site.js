@@ -7,6 +7,8 @@ let deck;
 let canHit = true;
 
 window.onload = function () {
+    getUserName();
+
     buildDeck();
     shuffleDeck();
     startGame();
@@ -186,4 +188,18 @@ function reduceAce(playerSum, playerAceCount) {
         playerAceCount -= 1;
     }
     return playerSum;
+}
+
+function getUserName() {
+    var userName = prompt("Please enter your name:");
+    if (userName != null && userName.trim() !== "") {
+        // User entered a name, you can store it in a variable or use it directly
+        alert("Hello, " + userName + "! Welcome to our website.");
+        // You can also store it in a variable for later use
+        document.getElementById("results").innerHTML = "Hello, " + userName + "! Welcome to our website.";
+        // var storedName = userName;
+    } else {
+        // User canceled or entered an empty name
+        alert("You did not enter your name. Please try again.");
+    }
 }

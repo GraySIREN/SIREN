@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=.75">
+    <title>Black Jack</title>
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+
+<body>
+
+    <h2>Dealer: <span id="dealer-sum"></span></h2>
+    <div id="dealer-cards">
+        <img id="hidden" src="/cards/BACK.png">
+        @*Making a change to test repo initialization*@
+    </div>
+
+    <h2>You: <span id="your-sum"></span></h2>
+    <div id="your-cards"></div>
+
+    <br><br />
+
+    <div id="button-row">
+        <button id="hit">Hit</button>
+        <button id="stay">Stay</button>
+        <button id="play-again-btn">Play Again</button>
+    </div>
+
+    <br><br />
+
+    <div>
+        <p id="results"></p>
+    </div>
+
+
+
+    <div class="row-container-1">
+        <!-- Additional Cards Container -->
+        <div class="card" style="border: solid 6px #133337; border-radius: 25px; resize: both; width: 120px; height: 168px; padding: 10px; margin-right: 10px;"></div>
+        <div class="card" style="border: solid 6px #133337; border-radius: 25px; resize: both; width: 120px; height: 168px; padding: 10px; margin-right: 10px;"></div>
+        <div class="card" style="border: solid 6px #133337; border-radius: 25px; resize: both; width: 120px; height: 168px; padding: 10px; margin-right: 10px;"></div>
+        <div class="card" style="border: solid 6px #133337; border-radius: 25px; resize: both; width: 120px; height: 168px; padding: 10px; margin-right: 10px;"></div>
+        <div class="card" style="border: solid 6px #133337; border-radius: 25px; resize: both; width: 120px; height: 168px; padding: 10px;"></div>
+
+        <!-- Game Stats Container -->
+        <div class="stats-container">
+            <div class="grid-item grid-item-1">Player Hand Total: <span id="playerTotal"></span></div>
+            <div class="grid-item grid-item-2">Dealer Hand Total: <span id="dealerTotal"></span></div>
+            <div class="grid-item grid-item-3">Bankroll: <span id="bankroll"></span></div>
+            <div class="grid-item grid-item-4">
+                Bet Amount:
+                <select id="betAmountDropdown">
+                    <option value="5">$5</option>
+                    <option value="10">$10</option>
+                    <option value="15">$15</option>
+                    <option value="20">$20</option>
+                    <option value="25">$25</option>
+                    <option value="30">$30</option>
+                    <option value="35">$35</option>
+                    <option value="40">$40</option>
+                    <option value="45">$45</option>
+                    <option value="50">$50</option>
+                </select>
+                <button onclick="submitBet()">Submit</button>
+            </div>
+
+            <div class="grid-item grid-item-5">Total Winnings: <span id="totalWins"></span></div>
+            <div class="grid-item grid-item-6">Total Loss: <span id="totalLosses"></span></div>
+            <div class="grid item grid-item-7 card deck-card" style="background-image: url(''); resize: both; height: 210px; width: 150px;">Deck<span poster="deck"></span></div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <script src="/js/site.js"></script>
+</body>
+
+</html>

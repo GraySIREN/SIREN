@@ -41,12 +41,11 @@
     color: black;
     text-align: center;
     align-items: center;
-    width: 100%;
     background-color: #7ea281;
     border: 2px solid #218d2a;
     border-radius: 25px;
     padding: 20px;
-    margin: 0 auto;
+    margin: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 

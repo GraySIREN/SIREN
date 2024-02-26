@@ -2,30 +2,89 @@
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     margin-bottom: 200px;
+    background: #7ea281;
 }
 
-#dealer-cards img {
-    height: 175px;
-    width: 125px;
-    margin: 10px;
+.parent-game-container {
+    display: grid;
+    flex-direction: row;
+    grid-template-rows: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    align-items: center;
+    justify-items: center;
 }
 
-#your-cards img {
-    height: 175px;
-    width: 125px;
-    margin: 10px;
+#child1-cards {
+    grid-row: 1;
+    grid-column: 1;
 }
 
-#button-row {
-    display: flex; /* Use flexbox */
-    justify-content: center; /* Center the buttons horizontally */
-    align-items: center; /* Center the buttons vertically */
-    margin-top: 20px; /* Add some spacing */
+    #dealer-cards img {
+        height: 175px;
+        width: 125px;
+        margin: 10px;
+    }
+
+    #your-cards img {
+        height: 175px;
+        width: 125px;
+        margin: 10px;
+    }
+
+#child2-stats-container {
+    display: inline;
+    gap: 10px;
 }
 
-    #button-row button {
+.grid-item {
+    color: black;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    background-color: #7ea281;
+    border: 2px solid #218d2a;
+    border-radius: 25px;
+    padding: 20px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+        .grid-item:hover {
+            transform: scale(1.03); /* Increase size on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add drop shadow on hover */
+            color: #6bbd67;
+            font-size: 1.05em; /* Increase text size on hover */
+        }
+
+#results {
+    width: 200px;
+    height: 65px;
+    text-align: center; /* Align text in the center */
+    font-size: 24px; /* Adjust font size as needed */
+    color: black;
+    border: solid 15px #218d2a;
+    border-radius: 25px;
+    margin: 25px;
+    display: flex; /* Ensure the text aligns in the center vertically */
+    justify-content: center; /* Ensure the text aligns in the center horizontally */
+    align-items: center; /* Ensure the text aligns in the center vertically */
+}
+
+.button-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+    .button-row button {
         width: 100px;
         height: 50px;
         font-size: 17px;
-        margin: 0 5px; /* Add margin between buttons */
+        margin: 0 5px;
     }
+
+    /*  Class = .uniqueClass
+        ID = #uniqueID
+    */

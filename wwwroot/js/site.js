@@ -32,7 +32,7 @@ function shuffleDeck() {
         deck[i] = deck[j];
         deck[j] = temp;
     }
-    console.log(deck);
+    console.log("DECK" + deck);
 }
 
 function startGame() {
@@ -43,7 +43,7 @@ function startGame() {
     dealerSum += getValue(hidden);
     dealerAceCount += checkAce(hidden);
 
-    console.log(hidden);
+    console.log("HIDDEN: " + hidden);
 
     while (dealerSum < 17) {
         let cardImg = document.createElement("img");
@@ -53,7 +53,7 @@ function startGame() {
         dealerAceCount += checkAce(card);
         document.getElementById("dealer-cards").append(cardImg);
     }
-    console.log(dealerSum);
+    console.log("DEALER: " + dealerSum);
 
     for (let i = 0; i < 2; i++) {
         let cardImg = document.createElement("img");
@@ -64,7 +64,7 @@ function startGame() {
         document.getElementById("your-cards").append(cardImg);
     }
 
-    console.log(yourSum);
+    console.log("USER: " + yourSum);
     document.getElementById("hit").addEventListener("click", hit);
     document.getElementById("stay").addEventListener("click", stay);
 
@@ -158,15 +158,15 @@ function resetGame() {
     document.getElementById("dealer-cards").appendChild(hiddenCardImg);
 
     //document.getElementById("userName").innerText = "You: ";
-
+    console.log("Game reset successfully!");
     buildDeck();
     shuffleDeck();
     startGame();
 
-    console.log("Game reset successfully!");
     console.log(yourSum);
     document.getElementById("hit").addEventListener("click", hit);
     document.getElementById("stay").addEventListener("click", stay);
+
 }
 
 function getValue(card) {

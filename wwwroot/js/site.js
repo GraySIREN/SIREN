@@ -14,7 +14,7 @@ document.getElementById("roundNumber").innerHTML = "Round: " + roundNumber;
 
 window.onload = function () {
     promptBuyIn();
-    document.getElementById("results").innerHTML = "Please submit your bet now.";
+    document.getElementById("results").innerHTML = "Please submit your bet now.\nIf you do not press submit, the bet is automatically set at the shown value.";
 
     buildDeck();
     shuffleDeck();
@@ -57,6 +57,8 @@ function shuffleDeck() {
     console.log("DECK: " + deck);
 }
 
+//In dealing cards at the start, need to define if I want all dealer cards dealt first, or after user has hit Stand.//
+
 function startGame() {
     shuffleDeck();
     hidden = deck.pop();
@@ -86,7 +88,7 @@ function startGame() {
 
     console.log("USER: " + yourSum);
     document.getElementById("hit").addEventListener("click", hit);
-    document.getElementById("stay").addEventListener("click", stay);
+    document.getElementById("stand").addEventListener("click", stand);
 
 }
 
@@ -106,10 +108,15 @@ function hit() {
 
     if (reduceAce(yourSum, yourAceCount) > 21) {
         canHit = false;
+        document.getElementById("results").innerText = "You Bust! Minus $" + betAmount;
+        bankRoll = bankRoll - betAmount;
+        document.getElementById("bankRoll").innerText = "Bankroll: $" + bankRoll;
     }
+
+    document.getElementById("your-sum").innerText = yourSum;
 }
 
-function stay() {
+function stand() {
     dealerSum = reduceAce(dealerSum, dealerAceCount);
     yourSum = reduceAce(yourSum, yourAceCount);
 
@@ -186,7 +193,7 @@ function resetGame() {
     console.log(yourSum);
 
     document.getElementById("hit").addEventListener("click", hit);
-    document.getElementById("stay").addEventListener("click", stay);
+    document.getElementById("stand").addEventListener("click", stand);
 }
 
 function getValue(card) {

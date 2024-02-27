@@ -6,14 +6,19 @@ let hidden;
 let deck;
 let canHit = true;
 let roundNumber = 1;
+let buyInAmount = 0;
+let bankRoll = 0;
 
+document.getElementById("roundNumber").innerHTML = "Round: " + roundNumber;
 
 window.onload = function () {
+    promptBuyIn();
     buildDeck();
     shuffleDeck();
     startGame();
 
 }
+
 
 function buildDeck() {
     let values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
@@ -126,6 +131,7 @@ function stay() {
 document.getElementById("play-again-btn").addEventListener("click", resetGame);
 
 function resetGame() {
+
     console.log("Resetting game...");
     dealerSum = 0;
     yourSum = 0;
@@ -145,7 +151,8 @@ function resetGame() {
     document.getElementById("dealer-cards").appendChild(hiddenCardImg);
 
     document.getElementById("roundNumber").innerText = "Round: " + roundNumber;
-    console.log(roundNumber);
+    console.log("Round: " + roundNumber);
+    console.log("Bankroll: $" + bankRoll);
 
     buildDeck();
     shuffleDeck();
@@ -183,4 +190,24 @@ function reduceAce(playerSum, playerAceCount) {
         playerAceCount -= 1;
     }
     return playerSum;
+}
+
+function promptBuyIn() {
+
+    var buyInAmount = window.prompt("How much would you like to buy in for?");
+
+    if (buyInAmount !== null) {
+        buyInAmount = parseFloat(buyInAmount);
+
+        if (!isNaN(buyInAmount) && buyInAmount > 0) {
+            document.getElementById("results").innerHTML = "You've bought in for $" + buyInAmount + ". Goodluck!";
+        } else {
+            alert("Please enter a valid buy-in amount.");
+            promptBuyIn();
+        }
+    }
+
+    bankRoll = buyInAmount;
+    document.getElementById("bankRoll").innerText = "Bankroll: $" + bankRoll;
+    console.log("Buy-in = $" + buyInAmount);
 }

@@ -5,6 +5,8 @@ let yourAceCount = 0;
 let hidden;
 let deck;
 let canHit = true;
+let roundNumber = 1;
+
 
 window.onload = function () {
     buildDeck();
@@ -12,6 +14,10 @@ window.onload = function () {
     startGame();
 
 }
+
+console.log("Game Starting");
+document.getElementById("roundNumber").innerText = "Round: " + roundNumber;
+console.log(roundNumber);
 
 function buildDeck() {
     let values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
@@ -36,7 +42,6 @@ function shuffleDeck() {
 }
 
 function startGame() {
-
     shuffleDeck();
     hidden = deck.pop();
     dealerSum += getValue(hidden);
@@ -131,6 +136,7 @@ function resetGame() {
     dealerAceCount = 0;
     yourAceCount = 0;
     canHit = true;
+    roundNumber++;
 
     document.getElementById("dealer-cards").innerHTML = "";
     document.getElementById("your-cards").innerHTML = "";

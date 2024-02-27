@@ -26,11 +26,23 @@
             margin: 10px;
         }
 
+            #dealer-cards:hover {
+                transform: scale(1.03); /* Increase size on hover */
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add drop shadow on hover */
+                color: #6bbd67;
+            }
+
         #your-cards img {
             height: 175px;
             width: 125px;
             margin: 10px;
         }
+
+            #your-cards:hover {
+                transform: scale(1.03); /* Increase size on hover */
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add drop shadow on hover */
+                color: #6bbd67;
+            }
 
             #child2-stats-container {
                 display: inline;

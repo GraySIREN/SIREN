@@ -14,12 +14,11 @@ document.getElementById("roundNumber").innerHTML = "Round: " + roundNumber;
 
 window.onload = function () {
     promptBuyIn();
-    document.getElementById("results").innerHTML = "Please submit your bet now.\nIf you do not press submit, the bet is automatically set at the shown value.";
+    document.getElementById("results").innerHTML = "Please submit your bet now.";
 
     buildDeck();
     shuffleDeck();
     startGame();
-
 }
 
 function submitBet() {
@@ -60,7 +59,6 @@ function shuffleDeck() {
 //In dealing cards at the start, need to define if I want all dealer cards dealt first, or after user has hit Stand.//
 
 function startGame() {
-    shuffleDeck();
     hidden = deck.pop();
     dealerSum += getValue(hidden);
     dealerAceCount += checkAce(hidden);
@@ -75,6 +73,7 @@ function startGame() {
         dealerAceCount += checkAce(card);
         document.getElementById("dealer-cards").append(cardImg);
     }
+
     console.log("DEALER: " + dealerSum);
 
     for (let i = 0; i < 2; i++) {
@@ -89,7 +88,6 @@ function startGame() {
     console.log("USER: " + yourSum);
     document.getElementById("hit").addEventListener("click", hit);
     document.getElementById("stand").addEventListener("click", stand);
-
 }
 
 function hit() {
@@ -163,38 +161,38 @@ function stand() {
 document.getElementById("play-again-btn").addEventListener("click", resetGame);
 
 function resetGame() {
+        console.log("Resetting game...");
+        dealerSum = 0;
+        yourSum = 0;
+        dealerAceCount = 0;
+        yourAceCount = 0;
+        canHit = true;
+        roundNumber++;
 
-    console.log("Resetting game...");
-    dealerSum = 0;
-    yourSum = 0;
-    dealerAceCount = 0;
-    yourAceCount = 0;
-    canHit = true;
-    roundNumber++;
+        document.getElementById("dealer-cards").innerHTML = "";
+        document.getElementById("your-cards").innerHTML = "";
+        document.getElementById("results").innerText = "Please submit your bet now.";
+        document.getElementById("dealer-sum").innerText = "";
+        document.getElementById("your-sum").innerText = "";
 
-    document.getElementById("dealer-cards").innerHTML = "";
-    document.getElementById("your-cards").innerHTML = "";
-    document.getElementById("results").innerText = "Please submit your bet now.";
-    document.getElementById("dealer-sum").innerText = "";
-    document.getElementById("your-sum").innerText = "";
+        let hiddenCardImg = document.createElement("img");
+        hiddenCardImg.src = "./cards/BACK.png";
+        document.getElementById("dealer-cards").appendChild(hiddenCardImg);
 
-    let hiddenCardImg = document.createElement("img");
-    hiddenCardImg.src = "./cards/BACK.png";
-    document.getElementById("dealer-cards").appendChild(hiddenCardImg);
+        document.getElementById("roundNumber").innerText = "Round: " + roundNumber;
+        console.log("Round: " + roundNumber);
+        console.log("Bankroll: $" + bankRoll);
 
-    document.getElementById("roundNumber").innerText = "Round: " + roundNumber;
-    console.log("Round: " + roundNumber);
-    console.log("Bankroll: $" + bankRoll);
+        buildDeck();
+        shuffleDeck();
+        startGame();
 
-    buildDeck();
-    shuffleDeck();
-    startGame();
+        console.log(yourSum);
 
-    console.log(yourSum);
-
-    document.getElementById("hit").addEventListener("click", hit);
-    document.getElementById("stand").addEventListener("click", stand);
+        document.getElementById("hit").addEventListener("click", hit);
+        document.getElementById("stand").addEventListener("click", stand);
 }
+
 
 function getValue(card) {
     let data = card.split("-");

@@ -15,10 +15,6 @@ window.onload = function () {
 
 }
 
-console.log("Game Starting");
-document.getElementById("roundNumber").innerText = "Round: " + roundNumber;
-console.log(roundNumber);
-
 function buildDeck() {
     let values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
     let types = ["C", "D", "H", "S"];
@@ -148,7 +144,8 @@ function resetGame() {
     hiddenCardImg.src = "./cards/BACK.png";
     document.getElementById("dealer-cards").appendChild(hiddenCardImg);
 
-    console.log("Game reset successfully!");
+    document.getElementById("roundNumber").innerText = "Round: " + roundNumber;
+    console.log(roundNumber);
 
     buildDeck();
     shuffleDeck();

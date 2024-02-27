@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using SIREN.Models;
 
-namespace Aaron_Gray.Controllers
+namespace SIREN.Controllers
 {
     public class HomeController : Controller
     {

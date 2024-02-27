@@ -1,7 +1,7 @@
 ﻿body {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    margin-bottom: 200px;
+    margin-bottom: 500px;
     background: #7ea281;
 }
 
@@ -32,43 +32,48 @@
         margin: 10px;
     }
 
-#child2-stats-container {
-    display: inline;
-    gap: 10px;
-}
+    #child2-stats-container {
+        display: inline;
+        gap: 10px;
+    }
 
-.grid-item {
+    .grid-item {
+        color: black;
+        text-align: center;
+        align-items: center;
+        background-color: #7ea281;
+        border: 2px solid #218d2a;
+        border-radius: 25px;
+        padding: 20px;
+        margin: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+            .grid-item:hover {
+                transform: scale(1.03); /* Increase size on hover */
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add drop shadow on hover */
+                color: #6bbd67;
+                font-size: 1.05em; /* Increase text size on hover */
+            }
+
+#results {
     color: black;
     text-align: center;
     align-items: center;
-    background-color: #7ea281;
+    width: 250px;
+    height: 125px;
     border: 2px solid #218d2a;
     border-radius: 25px;
     padding: 20px;
     margin: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-        .grid-item:hover {
-            transform: scale(1.03); /* Increase size on hover */
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add drop shadow on hover */
-            color: #6bbd67;
-            font-size: 1.05em; /* Increase text size on hover */
-        }
-
-#results {
-    width: 200px;
-    height: 65px;
-    text-align: center; /* Align text in the center */
-    font-size: 24px; /* Adjust font size as needed */
-    color: black;
-    border: solid 15px #218d2a;
-    border-radius: 25px;
-    margin: 25px;
-    display: flex; /* Ensure the text aligns in the center vertically */
-    justify-content: center; /* Ensure the text aligns in the center horizontally */
-    align-items: center; /* Ensure the text aligns in the center vertically */
-}
+    .results:hover {
+        transform: scale(1.03); /* Increase size on hover */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add drop shadow on hover */
+        color: #6bbd67;
+        font-size: 1.05em; /* Increase text size on hover */
+    }
 
 .button-row {
     display: flex;
@@ -87,3 +92,5 @@
     /*  Class = .uniqueClass
         ID = #uniqueID
     */
+
+   

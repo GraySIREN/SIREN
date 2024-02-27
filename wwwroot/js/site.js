@@ -79,6 +79,8 @@ function hit() {
         return;
     }
 
+    let message = "";
+
     let cardImg = document.createElement("img");
     let card = deck.pop();
     cardImg.src = "./cards/" + card + ".png";
@@ -88,10 +90,9 @@ function hit() {
 
     if (reduceAce(yourSum, yourAceCount) > 21) {
         canHit = false;
-        //document.getElementById("userName").innerText = "You bust!";
+        //message = "You bust!";
+        //document.getElementById("userName").innerText = message;
     }
-
-
 }
 
 //The stay function essentially acts as the end of the game. Results are shown
@@ -105,7 +106,7 @@ function stay() {
     let message = "";
 
     if (yourSum > 21) {
-        message = "You Lose!";
+        message = "You Bust!";
     }
     else if (dealerSum > 21) {
         message = "You win!";
@@ -124,6 +125,7 @@ function stay() {
     document.getElementById("dealer-sum").innerText = dealerSum;
     document.getElementById("your-sum").innerText = yourSum;
     document.getElementById("results").innerText = message;
+
 }
 
 //The game has completely finished. We see our results, all cards are shown, and a message is displayed as well as both Dealer and Player totals.
@@ -141,6 +143,7 @@ function resetGame() {
     yourAceCount = 0;
     canHit = true;
 
+
     // Clear dealer and player cards
     document.getElementById("dealer-cards").innerHTML = "";
     document.getElementById("your-cards").innerHTML = "";
@@ -154,11 +157,16 @@ function resetGame() {
     hiddenCardImg.src = "./cards/BACK.png";
     document.getElementById("dealer-cards").appendChild(hiddenCardImg);
 
+    //document.getElementById("userName").innerText = "You: ";
+
     buildDeck();
     shuffleDeck();
     startGame();
 
     console.log("Game reset successfully!");
+    console.log(yourSum);
+    document.getElementById("hit").addEventListener("click", hit);
+    document.getElementById("stay").addEventListener("click", stay);
 }
 
 function getValue(card) {

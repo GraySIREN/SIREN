@@ -37,8 +37,6 @@ function shuffleDeck() {
 
 function startGame() {
 
-    //We have populated the hidden HTML element with a card.
-    //The image is still the BACK.png from the HTML writeup.
     hidden = deck.pop();
     dealerSum += getValue(hidden);
     dealerAceCount += checkAce(hidden);
@@ -70,10 +68,6 @@ function startGame() {
 
 }
 
-
-//At this point we should have a hidden dealer card, any then the extras, as well as your 2 cards shown. Hidden has not been revealed
-
-
 function hit() {
     if (!canHit) {
         return;
@@ -90,12 +84,8 @@ function hit() {
 
     if (reduceAce(yourSum, yourAceCount) > 21) {
         canHit = false;
-        //message = "You bust!";
-        //document.getElementById("userName").innerText = message;
     }
 }
-
-//The stay function essentially acts as the end of the game. Results are shown
 
 function stay() {
     dealerSum = reduceAce(dealerSum, dealerAceCount);
@@ -121,19 +111,12 @@ function stay() {
         message = "You Lose!";
     }
 
-    //As the Hidden card has already been assigned a value and calculated into the sum, HERE is where the hidden card is finally revealed.
     document.getElementById("dealer-sum").innerText = dealerSum;
     document.getElementById("your-sum").innerText = yourSum;
     document.getElementById("results").innerText = message;
-
 }
 
-//The game has completely finished. We see our results, all cards are shown, and a message is displayed as well as both Dealer and Player totals.
-//We wait for the resetGame function to be executed.
-
 document.getElementById("play-again-btn").addEventListener("click", resetGame);
-
-
 
 function resetGame() {
     console.log("Resetting game...");
@@ -143,30 +126,26 @@ function resetGame() {
     yourAceCount = 0;
     canHit = true;
 
-
-    // Clear dealer and player cards
     document.getElementById("dealer-cards").innerHTML = "";
     document.getElementById("your-cards").innerHTML = "";
-
     document.getElementById("results").innerText = "";
     document.getElementById("dealer-sum").innerText = "";
     document.getElementById("your-sum").innerText = "";
 
-    // Display the hidden card
     let hiddenCardImg = document.createElement("img");
     hiddenCardImg.src = "./cards/BACK.png";
     document.getElementById("dealer-cards").appendChild(hiddenCardImg);
 
-    //document.getElementById("userName").innerText = "You: ";
     console.log("Game reset successfully!");
+
     buildDeck();
     shuffleDeck();
     startGame();
 
     console.log(yourSum);
+
     document.getElementById("hit").addEventListener("click", hit);
     document.getElementById("stay").addEventListener("click", stay);
-
 }
 
 function getValue(card) {

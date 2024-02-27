@@ -32,11 +32,12 @@ function shuffleDeck() {
         deck[i] = deck[j];
         deck[j] = temp;
     }
-    console.log("DECK" + deck);
+    console.log("DECK: " + deck);
 }
 
 function startGame() {
 
+    shuffleDeck();
     hidden = deck.pop();
     dealerSum += getValue(hidden);
     dealerAceCount += checkAce(hidden);
@@ -97,18 +98,23 @@ function stay() {
 
     if (yourSum > 21) {
         message = "You Bust!";
+        console.log(message);
     }
     else if (dealerSum > 21) {
         message = "You win!";
+        console.log(message);
     }
     else if (yourSum == dealerSum) {
         message = "Tie!";
+        console.log(message);
     }
     else if (yourSum > dealerSum) {
         message = "You Win!";
+        console.log(message);
     }
     else if (yourSum < dealerSum) {
         message = "You Lose!";
+        console.log(message);
     }
 
     document.getElementById("dealer-sum").innerText = dealerSum;

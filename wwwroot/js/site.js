@@ -9,13 +9,15 @@ let roundNumber = 1;
 let buyInAmount = 0;
 var bankRoll = 0;
 var betAmount = 0;
+var netWinLoss = 0;
+var roundWinLoss = 0;
 
 document.getElementById("roundNumber").innerHTML = "Round: " + roundNumber;
+document.getElementById("netWinLoss").innerHTML = "Net Win/Loss: $0"
 
 window.onload = function () {
     promptBuyIn();
     document.getElementById("results").innerHTML = "Please submit your bet now.";
-
     buildDeck();
     shuffleDeck();
     startGame();
@@ -108,7 +110,11 @@ function hit() {
         canHit = false;
         document.getElementById("results").innerText = "You Bust! Minus $" + betAmount;
         bankRoll = bankRoll - betAmount;
+        roundWinLoss = (betAmount * -1);
         document.getElementById("bankRoll").innerText = "Bankroll: $" + bankRoll;
+
+   
+        calculateNetWinLoss();
     }
 
     document.getElementById("your-sum").innerText = yourSum;
@@ -117,42 +123,49 @@ function hit() {
 function stand() {
     dealerSum = reduceAce(dealerSum, dealerAceCount);
     yourSum = reduceAce(yourSum, yourAceCount);
-
+    netWinLoss;
     canHit = false;
 
     let message = "";
 
     if (yourSum > 21) {
         message = "You Bust! Minus $" + betAmount;
+        roundWinLoss = (betAmount * -1);
         bankRoll = bankRoll - betAmount;
         document.getElementById("bankRoll").innerText = "Bankroll: $" + bankRoll;
         console.log(message);
     }
     else if (dealerSum > 21) {
         message = "You win! Plus: $" + (betAmount * 2);
+        roundWinLoss = (betAmount * 2);
         bankRoll = bankRoll + (betAmount * 2);
         document.getElementById("bankRoll").innerText = "Bankroll: $" + bankRoll;
         console.log(message);
+
     }
     else if (yourSum == dealerSum) {
         message = "Tie! All bets returned.";
         bankRoll = bankRoll + betAmount;
+        roundWinLoss = 0;
         document.getElementById("bankRoll").innerText = "Bankroll: $" + bankRoll;
         console.log(message);
     }
     else if (yourSum > dealerSum) {
         message = "You Win! Plus: $" + (betAmount * 2);
+        roundWinLoss = (betAmount * 2);
         bankRoll = bankRoll + (betAmount * 2);
         document.getElementById("bankRoll").innerText = "Bankroll: $" + bankRoll;
         console.log(message);
     }
     else if (yourSum < dealerSum) {
         message = "You Lose! Minus: $" + betAmount;
+        roundWinLoss = (betAmount * -1);
         bankRoll = bankRoll - betAmount;
         document.getElementById("bankRoll").innerText = "Bankroll: $" + bankRoll;
         console.log(message);
     }
 
+    calculateNetWinLoss();
     document.getElementById("dealer-sum").innerText = dealerSum;
     document.getElementById("your-sum").innerText = yourSum;
     document.getElementById("results").innerText = message;
@@ -240,4 +253,10 @@ function promptBuyIn() {
     bankRoll = buyInAmount;
     document.getElementById("bankRoll").innerText = "Bankroll: $" + bankRoll;
     console.log("Buy-in = $" + buyInAmount);
+}
+
+function calculateNetWinLoss() {
+    netWinLoss = netWinLoss + roundWinLoss;
+    console.log(netWinLoss);
+    document.getElementById("netWinLoss").innerHTML = "Net Win/Loss = $" + netWinLoss;
 }

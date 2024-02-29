@@ -15,58 +15,83 @@
     justify-items: center;
 }
 
-    #child1-cards {
-        grid-row: 1;
-        grid-column: 1;
+#child1-cards {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+
+    #dealerName {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        font-size: xx-large;
+        color: #f44336;
+        text-shadow: 
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
     }
 
-        #dealer-cards img {
-            height: 175px;
-            width: 125px;
-            margin: 10px;
-        }
+    #dealer-cards img {
+    height: 175px;
+    width: 125px;
+    margin: 10px;
+    }
 
-            #dealer-cards:hover {
-                transform: scale(1.03); /* Increase size on hover */
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add drop shadow on hover */
-                color: #6bbd67;
-            }
+    #dealer-cards:hover {
+        transform: scale(1.03); /* Increase size on hover */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add drop shadow on hover */
+        color: #6bbd67;
+    }
+
+        #userName {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        font-size: xx-large;
+        color: #008bff;
+        text-shadow: 
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+        }
 
         #your-cards img {
-            height: 175px;
-            width: 125px;
-            margin: 10px;
+        height: 175px;
+        width: 125px;
+        margin: 10px;
         }
 
-            #your-cards:hover {
-                transform: scale(1.03); /* Increase size on hover */
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add drop shadow on hover */
-                color: #6bbd67;
-            }
+        #your-cards:hover {
+            transform: scale(1.03); /* Increase size on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add drop shadow on hover */
+            color: #6bbd67;
+        }
 
-                #child2-stats-container {
-                    display: inline;
-                    gap: 10px;
-                }
+#child2-stats-container {
+    display: inline;
+    gap: 10px;
+}
 
-                .grid-item {
-                    color: black;
-                    text-align: center;
-                    align-items: center;
-                    background-color: #7ea281;
-                    border: 2px solid #218d2a;
-                    border-radius: 25px;
-                    padding: 20px;
-                    margin: 15px;
-                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                }
+.grid-item {
+    color: black;
+    text-align: center;
+    align-items: center;
+    background-color: #7ea281;
+    border: 2px solid #218d2a;
+    border-radius: 25px;
+    padding: 20px;
+    margin: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-                .grid-item:hover {
-                    transform: scale(1.03); /* Increase size on hover */
-                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add drop shadow on hover */
-                    color: #6bbd67;
-                    font-size: 1.05em; /* Increase text size on hover */
-                }
+.grid-item:hover {
+    transform: scale(1.03); /* Increase size on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add drop shadow on hover */
+    color: #6bbd67;
+    font-size: 1.05em; /* Increase text size on hover */
+}
 
 #results {
     color: black;

@@ -18,6 +18,7 @@ document.getElementById("netWinLoss").innerHTML = "Net Win/Loss: $0"
 window.onload = function () {
     promptBuyIn();
     document.getElementById("results").innerHTML = "Please submit your bet now.";
+    // Need to create a function, or edit existing, to force player to submit a bet before anything else can be done in the game.
     buildDeck();
     shuffleDeck();
     startGame();

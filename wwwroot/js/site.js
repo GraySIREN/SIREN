@@ -135,6 +135,7 @@ function stand() {
         bankRoll = bankRoll - betAmount;
         document.getElementById("bankRoll").innerText = "Bankroll: $" + bankRoll;
         console.log(message);
+
     }
     else if (dealerSum > 21) {
         message = "You win! Plus: $" + (betAmount * 2);
@@ -150,6 +151,7 @@ function stand() {
         roundWinLoss = 0;
         document.getElementById("bankRoll").innerText = "Bankroll: $" + bankRoll;
         console.log(message);
+
     }
     else if (yourSum > dealerSum) {
         message = "You Win! Plus: $" + (betAmount * 2);
@@ -157,6 +159,7 @@ function stand() {
         bankRoll = bankRoll + (betAmount * 2);
         document.getElementById("bankRoll").innerText = "Bankroll: $" + bankRoll;
         console.log(message);
+
     }
     else if (yourSum < dealerSum) {
         message = "You Lose! Minus: $" + betAmount;
@@ -164,6 +167,7 @@ function stand() {
         bankRoll = bankRoll - betAmount;
         document.getElementById("bankRoll").innerText = "Bankroll: $" + bankRoll;
         console.log(message);
+
     }
 
     calculateNetWinLoss();

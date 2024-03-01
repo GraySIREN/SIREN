@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale= 1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="/css/taskmanager.css">
+</head>
+
+<body>
+    <h2>TaskManager.</h2>
+    <div id="theme-selector">
+        <label for="theme-dropdown">Select a Theme:</label>
+        <select id="theme-dropdown" onchange="setTheme(this.value)">
+            <option value="theme1">Rose Gold</option>
+            <option value="theme2">Lime Green</option>
+            <option value="theme3">Dark Mode</option>
+            <option value="theme4">Light Mode</option>
+            <option value="theme5">Retro</option>
+            <!-- Add more options for additional themes if needed -->
+        </select>
+    </div>
+    <div id="task-manager-template">
+
+        <div id="grid-container">
+            <div id="grid-item-head">Welcome to your Task Manager!</div>
+            <div id="grid-item">TASK 1</div>
+            <div id="grid-item">TASK 2</div>
+            <div id="grid-item">TASK 3</div>
+            <div id="grid-item">TASK 4</div>
+            <div id="grid-item">TASK 5</div>
+            <div id="grid-item">TASK 6</div>
+            <div id="grid-item">TASK 7</div>
+            <div id="grid-item">TASK 8</div>
+            <div id="grid-item">TASK 9</div>
+        </div>
+    </div>
+
+    <script src="/js/taskmanager.js"></script>
+</body>
+
+
+</html>

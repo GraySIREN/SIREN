@@ -29,6 +29,12 @@ namespace SIREN.Controllers
 
         }
 
+        public IActionResult TaskManager()
+        {
+            return View();
+
+        }
+
         public IActionResult Privacy()
         {
             return View();

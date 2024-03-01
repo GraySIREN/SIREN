@@ -113,9 +113,9 @@
 
 #results {
     color: black;
-    text-align: center;
+    display: inline-flex;
+    justify-content: center;
     align-items: center;
-    display: flex;
     width: 250px;
     height: 125px;
     border: 2px solid #218d2a;
@@ -124,6 +124,8 @@
     margin: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+
     .results:hover {
         transform: scale(1.03);
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);

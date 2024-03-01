@@ -1,45 +1,30 @@
 ﻿:root {
-    --theme-background-color: #f9ba9c; /* Default background color */
-    --theme-text-color: #BF625A; /* Default text color */
+    /*     Default theme properties */
+    --theme-page-background-color: #F2F2F2;
+    --theme-grid-container-background-color: #F2F2F2;
+    --theme-text-color: #262626;
+    --theme-border-color: #737373;
+    --theme-grid-item-hover-text-color: #262626;
+    --theme-grid-item-hover-background-color: #BFBFBF;
 }
 
 body {
+    background-color: var(--theme-page-background-color);
     color: var(--theme-text-color);
-    background-color: var(--theme-background-color);
 }
 
 #theme-selector {
     align-items: end;
     margin: 10px;
-}
-.theme1 {
-    --theme-background-color: #f9ba9c; /* Default background color */
-    --theme-text-color: #BF625A; /* Default text color */
-    --theme-border-color: #D98B84;
+    background-color: var(--theme-page-background-color);
+    color: var(--theme-text-color);
+    border: var(--theme-border-color);
 }
 
-.theme2 {
-    --theme-background-color: #E7F2BD; /* Default background color */
-    --theme-text-color: #C8D948; /* Default text color */
-    --theme-border-color: #C8D948;
-}
-
-.theme3 {
-    --theme-background-color: #1F1F1F; /* Default background color */
-    --theme-text-color: #BB86FC; /* Default text color */
-    --theme-border-color: #03DAC6;
-}
-
-.theme4 {
-    --theme-background-color: #C2E9F2; /* Default background color */
-    --theme-text-color: #3C6973; /* Default text color */
-    --theme-border-color: #7AB3BF;
-}
-
-.theme5 {
-    --theme-background-color: #5F5448; /* Default background color */
-    --theme-text-color: #037E8C; /* Default text color */
-    --theme-border-color: #F24C27;
+#theme-dropdown {
+    background-color: var(--theme-page-background-color);
+    color: var(--theme-text-color);
+    border: var(--theme-border-color);
 }
 
 #task-manager-template {
@@ -51,57 +36,37 @@ body {
 }
 
 #grid-container {
-    color: var(--theme-text-color);
-    background-color: var(--theme-background-color);
-    border: solid 3px var(--theme-border-color);
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(8, 1fr);
-    border: solid 3px;
+    border: solid 3px var(--theme-border-color);
     border-radius: 25px;
+    background-color: var(--theme-grid-container-background-color);
     justify-content: center; /* Center content horizontally */
     align-items: center; /* Center content vertically */
 }
-#grid-item-head {
-    color: var(--theme-text-color);
-    background-color: var(--theme-background-color);
-    border: solid 3px var(--theme-border-color);
-    font-size: xx-large;
-    width: 750px;
-    height: 75px;
-    gap: 25px;
-    margin: 10px;
-    border: solid 3px;
-    border-radius: 25px;
-    display: flex; /* To align text inside grid items */
-    justify-content: center; /* Center text horizontally */
-    align-items: center; /* Center text vertically */
-}
 
+#grid-item-head,
 #grid-item {
-    color: var(--theme-text-color);
-    background-color: var(--theme-background-color);
-    border: solid 3px var(--theme-border-color);
     font-size: large;
     width: 750px;
     height: 75px;
     gap: 25px;
     margin: 10px;
-    border: solid 3px;
+    border: solid 3px var(--theme-border-color);
     border-radius: 25px;
     display: flex; /* To align text inside grid items */
     justify-content: center; /* Center text horizontally */
     align-items: center; /* Center text vertically */
+    background-color: var(--theme-grid-container-background-color);
+    color: var(--theme-text-color);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
     #grid-item:hover {
-        color: var(--theme-text-color);
-        background-color: var(--theme-background-color);
-        border: solid 3px var(--theme-border-color);
-        background-color: #F2BFBB;
+        background-color: var(--theme-grid-item-hover-background-color);
+        color: var(--theme-grid-item-hover-text-color);
         transform: scale(1.13);
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        color: #BF625A;
         font-size: 1.5em;
     }

@@ -20,20 +20,19 @@
             <option value="theme6">Retro</option>
             <!-- Add more options for additional themes if needed -->
         </select>
+        <!-- Buttons for adding and deleting rows -->
+        <div id="row-buttons">
+            <button onclick="addTaskRow()">Add Task</button>
+            <button onclick="deleteTaskRow()">Delete Task</button>
+        </div>
     </div>
     <div id="task-manager-template">
 
         <div id="grid-container">
             <div id="grid-item-head">Welcome to your Task Manager!</div>
-            <div id="grid-item">TASK 1</div>
-            <div id="grid-item">TASK 2</div>
-            <div id="grid-item">TASK 3</div>
-            <div id="grid-item">TASK 4</div>
-            <div id="grid-item">TASK 5</div>
-            <div id="grid-item">TASK 6</div>
-            <div id="grid-item">TASK 7</div>
-            <div id="grid-item">TASK 8</div>
-            <div id="grid-item">TASK 9</div>
+            <div id="grid-item" contenteditable="true">TASK 1</div>
+            <div id="grid-item" contenteditable="true">TASK 2</div>
+            <div id="grid-item" contenteditable="true">TASK 3</div>
         </div>
     </div>
 

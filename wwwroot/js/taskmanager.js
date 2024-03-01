@@ -1,4 +1,6 @@
-﻿function setTheme(theme) {
+﻿// SET COLOR THEME
+
+function setTheme(theme) {
     if (theme == 'theme1') {
         document.documentElement.style.setProperty('--theme-page-background-color', '#F2F2F2');
         document.documentElement.style.setProperty('--theme-grid-container-background-color', '#F2F2F2');
@@ -42,5 +44,26 @@
         document.documentElement.style.setProperty('--theme-border-color', '#F2F2BF');
         document.documentElement.style.setProperty('--theme-grid-item-hover-background-color', '#024959');
         document.documentElement.style.setProperty('--theme-grid-item-hover-text-color', '#F24C27');
+    }
+}
+
+function addTaskRow() {
+    // Create a new task grid item
+    const newTask = document.createElement('div');
+    newTask.setAttribute('id', 'grid-item');
+    newTask.setAttribute('contenteditable', 'true');
+    newTask.textContent = 'New Task';
+
+    // Append the new task grid item to the grid container
+    document.getElementById('grid-container').appendChild(newTask);
+}
+
+function deleteTaskRow() {
+    // Get the grid container
+    const gridContainer = document.getElementById('grid-container');
+
+    // Remove the last task grid item if it exists
+    if (gridContainer.lastElementChild.id === 'grid-item') {
+        gridContainer.removeChild(gridContainer.lastElementChild);
     }
 }

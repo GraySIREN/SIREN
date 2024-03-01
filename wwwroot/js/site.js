@@ -19,6 +19,7 @@ window.onload = function () {
     promptBuyIn();
     document.getElementById("results").innerHTML = "Please submit your bet now.";
     // Need to create a function, or edit existing, to force player to submit a bet before anything else can be done in the game.
+
     buildDeck();
     shuffleDeck();
     startGame();
@@ -56,7 +57,7 @@ function shuffleDeck() {
         deck[i] = deck[j];
         deck[j] = temp;
     }
-    console.log("DECK: " + deck);
+    //console.log("DECK: " + deck);
 }
 
 //In dealing cards at the start, need to define if I want all dealer cards dealt first, or after user has hit Stand.//
@@ -66,29 +67,33 @@ function startGame() {
     dealerSum += getValue(hidden);
     dealerAceCount += checkAce(hidden);
 
-    console.log("HIDDEN: " + hidden);
+    //Comment out once deployed
+    console.log("HIDDEN: " + hidden);//
 
-    while (dealerSum < 17) {
-        let cardImg = document.createElement("img");
-        let card = deck.pop();
-        cardImg.src = "./cards/" + card + ".png";
-        dealerSum += getValue(card);
-        dealerAceCount += checkAce(card);
-        document.getElementById("dealer-cards").append(cardImg);
-    }
+    setTimeout(function () {
+        dealCardAnimation("dealer-cards", hidden);
+    }, 500); 
 
-    console.log("DEALER: " + dealerSum);
+    setTimeout(function () {
+        dealCardAnimation("dealer-cards", deck.pop());
+    }, 1000); 
 
-    for (let i = 0; i < 2; i++) {
-        let cardImg = document.createElement("img");
-        let card = deck.pop();
-        cardImg.src = "./cards/" + card + ".png";
-        yourSum += getValue(card);
-        yourAceCount += checkAce(card);
-        document.getElementById("your-cards").append(cardImg);
-    }
+    setTimeout(function () {
+        dealCardAnimation("your-cards", deck.pop());
+    }, 2000); 
 
-    console.log("USER: " + yourSum);
+    setTimeout(function () {
+        dealCardAnimation("your-cards", deck.pop());
+    }, 2500);
+
+    //Comment out once deployed
+    setTimeout(function () {
+        console.log("Dealer Sum: " + dealerSum);
+        console.log("Your Sum: " + yourSum);
+    }, 3000);
+
+    document.getElementById("hit").removeEventListener("click", hit);
+    document.getElementById("stand").removeEventListener("click", stand);
     document.getElementById("hit").addEventListener("click", hit);
     document.getElementById("stand").addEventListener("click", stand);
 }
@@ -113,23 +118,26 @@ function hit() {
         bankRoll = bankRoll - betAmount;
         roundWinLoss = (betAmount * -1);
         document.getElementById("bankRoll").innerText = "Bankroll: $" + bankRoll;
-
-   
         calculateNetWinLoss();
+
+    } else if (yourSum == 21) {
+        canHit = false;
+        stand();
     }
 
     document.getElementById("your-sum").innerText = yourSum;
+
 }
 
 function stand() {
     dealerSum = reduceAce(dealerSum, dealerAceCount);
     yourSum = reduceAce(yourSum, yourAceCount);
     netWinLoss;
-    canHit = false;
 
     let message = "";
 
     if (yourSum > 21) {
+        canHit = false;
         message = "You Bust! Minus $" + betAmount;
         roundWinLoss = (betAmount * -1);
         bankRoll = bankRoll - betAmount;
@@ -179,38 +187,39 @@ function stand() {
 document.getElementById("play-again-btn").addEventListener("click", resetGame);
 
 function resetGame() {
-        console.log("Resetting game...");
-        dealerSum = 0;
-        yourSum = 0;
-        dealerAceCount = 0;
-        yourAceCount = 0;
-        canHit = true;
-        roundNumber++;
+    console.log("Resetting game...");
+    dealerSum = 0;
+    yourSum = 0;
+    dealerAceCount = 0;
+    yourAceCount = 0;
+    canHit = true;
+    roundNumber++;
 
-        document.getElementById("dealer-cards").innerHTML = "";
-        document.getElementById("your-cards").innerHTML = "";
-        document.getElementById("results").innerText = "Please submit your bet now.";
-        document.getElementById("dealer-sum").innerText = "";
-        document.getElementById("your-sum").innerText = "";
+    document.getElementById("dealer-cards").innerHTML = "";
+    document.getElementById("your-cards").innerHTML = "";
+    document.getElementById("results").innerText = "Please submit your bet now.";
+    document.getElementById("dealer-sum").innerText = "";
+    document.getElementById("your-sum").innerText = "";
 
-        let hiddenCardImg = document.createElement("img");
-        hiddenCardImg.src = "./cards/BACK.png";
-        document.getElementById("dealer-cards").appendChild(hiddenCardImg);
+    let hiddenCardImg = document.createElement("img");
+    hiddenCardImg.src = "./cards/BACK.png";
+    document.getElementById("dealer-cards").appendChild(hiddenCardImg);
 
-        document.getElementById("roundNumber").innerText = "Round: " + roundNumber;
-        console.log("Round: " + roundNumber);
-        console.log("Bankroll: $" + bankRoll);
+    document.getElementById("roundNumber").innerText = "Round: " + roundNumber;
+    console.log("Round: " + roundNumber);
+    console.log("Bankroll: $" + bankRoll);
 
-        buildDeck();
-        shuffleDeck();
-        startGame();
+    buildDeck();
+    shuffleDeck();
+    startGame();
 
-        console.log(yourSum);
+    console.log(yourSum);
 
-        document.getElementById("hit").addEventListener("click", hit);
-        document.getElementById("stand").addEventListener("click", stand);
+    document.getElementById("hit").removeEventListener("click", hit);
+    document.getElementById("stand").removeEventListener("click", stand);
+    document.getElementById("hit").addEventListener("click", hit);
+    document.getElementById("stand").addEventListener("click", stand);
 }
-
 
 function getValue(card) {
     let data = card.split("-");
@@ -264,4 +273,33 @@ function calculateNetWinLoss() {
     netWinLoss = netWinLoss + roundWinLoss;
     console.log(netWinLoss);
     document.getElementById("netWinLoss").innerHTML = "Net Win/Loss = $" + netWinLoss;
+}
+
+function dealCardAnimation(containerId, card) {
+    let container = document.getElementById(containerId);
+    let cardImg = document.createElement("img");
+    cardImg.src = "./cards/" + card + ".png";
+    cardImg.classList.add("card");
+
+    let cardRow;
+    if (container.getElementsByClassName("card-row").length === 0 || container.lastElementChild.children.length >= 3) {
+        cardRow = document.createElement("div");
+        cardRow.classList.add("card-row");
+        container.appendChild(cardRow);
+    } else {
+        cardRow = container.lastElementChild;
+    }
+
+    cardRow.appendChild(cardImg);
+    void cardImg.offsetWidth;
+    cardImg.style.animation = "dealAnimation 0.5s forwards";
+
+    if (containerId === "your-cards") {
+        yourSum += getValue(card);
+        yourAceCount += checkAce(card);
+        document.getElementById("your-sum").innerText = yourSum;
+    } else if (containerId === "dealer-cards") {
+        dealerSum += getValue(card);
+        dealerAceCount += checkAce(card);
+    }
 }

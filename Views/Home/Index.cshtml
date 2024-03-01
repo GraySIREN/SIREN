@@ -10,28 +10,24 @@
 <body>
     <!--Parent Container-->
     <div class="parent-game-container">
-
         <div id="child1-cards">
 
-            <!--Dealer Cards and Results-->
+            <!-- Dealer Cards and Results -->
             <span id="dealerName">Dealer: <span id="dealer-sum"></span></span>
-            <div id="dealer-cards">
+            <div id="dealer-cards" class="card-area">
                 <img id="hidden" src="/cards/BACK.png">
             </div>
 
-            <!--Player Cards and Results-->
+            <!-- Player Cards and Results -->
             <h2 id="userName">You: <span id="your-sum"></span></h2>
-            <div id="your-cards"></div>
-
+            <div id="your-cards" class="card-area"></div>
         </div>
 
-        <div class="parent-game-container">
-
-            <!-- Game Stats Container-->
-            <div id="child2-stats-container">
-                <div class="grid-item"><span id="roundNumber"></span></div>
-                <div class="grid-item"><span id="bankRoll"></span></div>
-                <div class="grid-item">
+        <!-- Game Stats Container-->
+        <div id="child2-stats-container">
+            <div class="grid-item"><span id="roundNumber"></span></div>
+            <div class="grid-item"><span id="bankRoll"></span></div>
+            <div class="grid-item">
                     Bet Amount:
                     <select id="betAmountDropdown">
                         <option value="5">$5</option>
@@ -45,19 +41,16 @@
                         <option value="45">$45</option>
                         <option value="50">$50</option>
                     </select>
-                    <button id="submit-bet" onclick="submitBet()">Bet</button>
-                </div>
-                <div class="grid-item"><span id="netWinLoss"></span></div>
+                <button id="submit-bet" onclick="submitBet()">Bet</button>
             </div>
-        </div>
 
-        <div>
-            <p id="results"></p>
+            <div class="grid-item"><span id="netWinLoss"></span></div>
         </div>
-
     </div>
 
-    <br><br />
+    <div>
+        <p id="results"></p>
+    </div>
 
     <div class="button-row">
         <button id="hit">Hit</button>
@@ -67,5 +60,4 @@
 
     <script src="/js/site.js"></script>
 </body>
-
 </html>

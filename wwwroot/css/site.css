@@ -15,11 +15,28 @@
     justify-items: center;
 }
 
+    .card-area {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .card-row {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .card {
+        width: 100px;
+        height: 150px;
+        margin-right: 10px;
+    }
+
 #child1-cards {
     grid-row: 1;
     grid-column: 1;
 }
-
 
     #dealerName {
         font-family: Arial, Helvetica, sans-serif;
@@ -40,8 +57,8 @@
     }
 
     #dealer-cards:hover {
-        transform: scale(1.03); /* Increase size on hover */
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add drop shadow on hover */
+        transform: scale(1.03);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         color: #6bbd67;
     }
 
@@ -64,33 +81,34 @@
         }
 
         #your-cards:hover {
-            transform: scale(1.03); /* Increase size on hover */
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add drop shadow on hover */
+            transform: scale(1.03);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             color: #6bbd67;
         }
 
 #child2-stats-container {
-    display: inline;
-    gap: 10px;
+    justify-content: center;
+    grid-row: 1;
+    grid-column: 2;
 }
 
-.grid-item {
-    color: black;
-    text-align: center;
-    align-items: center;
-    background-color: #7ea281;
-    border: 2px solid #218d2a;
-    border-radius: 25px;
-    padding: 20px;
-    margin: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+    .grid-item {
+        color: black;
+        text-align: center;
+        align-items: center;
+        background-color: #7ea281;
+        border: 2px solid #218d2a;
+        border-radius: 25px;
+        padding: 20px;
+        margin: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-.grid-item:hover {
-    transform: scale(1.03); /* Increase size on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add drop shadow on hover */
-    color: #6bbd67;
-    font-size: 1.05em; /* Increase text size on hover */
+    .grid-item:hover {
+        transform: scale(1.03);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        color: #6bbd67;
+        font-size: 1.05em;
 }
 
 #results {
@@ -107,10 +125,10 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
     .results:hover {
-        transform: scale(1.03); /* Increase size on hover */
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add drop shadow on hover */
+        transform: scale(1.03);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         color: #6bbd67;
-        font-size: 1.05em; /* Increase text size on hover */
+        font-size: 1.05em;
     }
 
 .button-row {
@@ -127,10 +145,18 @@
         margin: 0 5px;
     }
 
-    /*  Class = .uniqueClass
-        ID = #uniqueID
-    */
+@keyframes dealAnimation {
+    0% {
+        transform: translateY(-100px) rotate(-20deg);
+        opacity: 0;
+    }
 
-   .footer {
-       margin-top: 300px;
-   }
+    100% {
+        transform: translateY(0) rotate(0);
+        opacity: 1;
+    }
+}
+
+.footer {
+    margin-top: 300px;
+}

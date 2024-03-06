@@ -1,5 +1,5 @@
 ﻿:root {
-         Default theme properties 
+/*         Default theme properties */
     --theme-page-background-color: #F2F2F2;
     --theme-grid-container-background-color: #F2F2F2;
     --theme-text-color: #262626;
@@ -45,8 +45,8 @@ body {
     border: solid 3px var(--theme-border-color);
     border-radius: 25px;
     background-color: var(--theme-grid-container-background-color);
-    justify-content: center;  Center content horizontally 
-    align-items: center;  Center content vertically 
+    justify-content: center;
+    align-items: center;
 }
 
 #grid-item-head,
@@ -60,9 +60,9 @@ body {
     margin: 10px;
     border: solid 3px var(--theme-border-color);
     border-radius: 25px;
-    display: flex;  To align text inside grid items 
-    justify-content: center;  Center text horizontally 
-    align-items: center;  Center text vertically 
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: var(--theme-grid-container-background-color);
     color: var(--theme-text-color);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

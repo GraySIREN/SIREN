@@ -1,5 +1,5 @@
 ﻿:root {
-    /*     Default theme properties */
+         Default theme properties 
     --theme-page-background-color: #F2F2F2;
     --theme-grid-container-background-color: #F2F2F2;
     --theme-text-color: #262626;
@@ -39,13 +39,14 @@ body {
 #grid-container {
     height: auto;
     display: grid;
+    padding: 1rem;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(8, 1fr);
     border: solid 3px var(--theme-border-color);
     border-radius: 25px;
     background-color: var(--theme-grid-container-background-color);
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
+    justify-content: center;  Center content horizontally 
+    align-items: center;  Center content vertically 
 }
 
 #grid-item-head,
@@ -53,13 +54,15 @@ body {
     font-size: large;
     width: 750px;
     height: 75px;
+    padding: 1rem;
+    cursor: move;
     gap: 25px;
     margin: 10px;
     border: solid 3px var(--theme-border-color);
     border-radius: 25px;
-    display: flex; /* To align text inside grid items */
-    justify-content: center; /* Center text horizontally */
-    align-items: center; /* Center text vertically */
+    display: flex;  To align text inside grid items 
+    justify-content: center;  Center text horizontally 
+    align-items: center;  Center text vertically 
     background-color: var(--theme-grid-container-background-color);
     color: var(--theme-text-color);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -71,4 +74,27 @@ body {
         transform: scale(1.13);
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         font-size: 1.5em;
+    }
+
+    #grid-item.dragging {
+        opacity: 0.5;
+    }
+
+
+/*    Trying to configure draggable content*/
+.container {
+    background-color: black;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.draggable {
+    padding: 1rem;
+    background-color: white;
+    border: 1px solid black;
+    cursor: move;
+}
+
+    .draggable.dragging {
+        opacity: .5;
     }

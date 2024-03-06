@@ -82,7 +82,7 @@ body {
 
 
 /*    Trying to configure draggable content*/
-.container {
+/*.container {
     background-color: black;
     padding: 1rem;
     margin-top: 1rem;
@@ -97,4 +97,4 @@ body {
 
     .draggable.dragging {
         opacity: .5;
-    }
+    }*/

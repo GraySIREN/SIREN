@@ -7,11 +7,14 @@
 .card-row {
     display: flex;
     margin-bottom: 20px;
-    width: 65%;
+    width: 60%;
 }
 
     .card-row:nth-child(even) {
         justify-content: flex-end;
+    }
+    .card-row:nth-child(odd) {
+        justify-content: flex-start;
     }
 
 .card {
@@ -20,7 +23,7 @@
     grid-template-rows: 1fr;
     background: linear-gradient(to bottom right, #fff, #f3f8ff);
     border: 1.5px solid black;
-    border-radius: 5px;
+    border-radius: 25px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -34,13 +37,13 @@
     background-color: white;
     grid-column: 1;
     grid-row: 1;
-    width: 150px;
-    height: 150px;
+    width: 90px;
+    height: 90px;
     border: 1.5px solid black;
     border-radius: 25px;
     box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
     flex: 1;
-    padding: 20px;
+    padding: 10px;
     margin: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -51,6 +54,7 @@
     }
 
 .card-content {
+    width: auto;
     grid-column: 2;
     grid-row: 1;
     flex: 1;

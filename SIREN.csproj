@@ -13,6 +13,63 @@
     <PackageReference Include="jQuery" Version="3.7.1" />
   </ItemGroup>
   <ItemGroup>
+    <Content Remove="wwwroot\cards\7-H.png" />
+    <Content Remove="wwwroot\cards\9-S.png" />
+    <Content Remove="wwwroot\cards\9-D.png" />
+    <Content Remove="wwwroot\cards\5-H.png" />
+    <Content Remove="wwwroot\cards\J-H.png" />
+    <Content Remove="wwwroot\cards\Q-H.png" />
+    <Content Remove="wwwroot\cards\9-C.png" />
+    <Content Remove="wwwroot\cards\3-H.png" />
+    <Content Remove="wwwroot\cards\8-S.png" />
+    <Content Remove="wwwroot\cards\8-D.png" />
+    <Content Remove="wwwroot\cards\10-C.png" />
+    <Content Remove="wwwroot\cards\K-H.png" />
+    <Content Remove="wwwroot\cards\4-H.png" />
+    <Content Remove="wwwroot\cards\A-C.png" />
+    <Content Remove="wwwroot\cards\6-H.png" />
+    <Content Remove="wwwroot\cards\A-D.png" />
+    <Content Remove="wwwroot\cards\A-S.png" />
+    <Content Remove="wwwroot\cards\10-S.png" />
+    <Content Remove="wwwroot\cards\10-D.png" />
+    <Content Remove="wwwroot\cards\2-H.png" />
+    <Content Remove="wwwroot\cards\8-C.png" />
+    <Content Remove="wwwroot\cards\6-C.png" />
+    <Content Remove="wwwroot\cards\A-H.png" />
+    <Content Remove="wwwroot\cards\4-C.png" />
+    <Content Remove="wwwroot\cards\K-C.png" />
+    <Content Remove="wwwroot\cards\10-H.png" />
+    <Content Remove="wwwroot\cards\2-S.png" />
+    <Content Remove="wwwroot\cards\2-D.png" />
+    <Content Remove="wwwroot\cards\6-S.png" />
+    <Content Remove="wwwroot\cards\6-D.png" />
+    <Content Remove="wwwroot\cards\8-H.png" />
+    <Content Remove="wwwroot\cards\2-C.png" />
+    <Content Remove="wwwroot\cards\K-D.png" />
+    <Content Remove="wwwroot\cards\K-S.png" />
+    <Content Remove="wwwroot\cards\4-D.png" />
+    <Content Remove="wwwroot\cards\4-S.png" />
+    <Content Remove="wwwroot\cards\Q-C.png" />
+    <Content Remove="wwwroot\cards\J-C.png" />
+    <Content Remove="wwwroot\cards\5-C.png" />
+    <Content Remove="wwwroot\cards\3-S.png" />
+    <Content Remove="wwwroot\cards\J-B.png" />
+    <Content Remove="wwwroot\cards\3-D.png" />
+    <Content Remove="wwwroot\cards\7-C.png" />
+    <Content Remove="wwwroot\cards\J-R.png" />
+    <Content Remove="wwwroot\cards\3-C.png" />
+    <Content Remove="wwwroot\cards\9-H.png" />
+    <Content Remove="wwwroot\cards\5-D.png" />
+    <Content Remove="wwwroot\cards\5-S.png" />
+    <Content Remove="wwwroot\cards\J-D.png" />
+    <Content Remove="wwwroot\cards\J-S.png" />
+    <Content Remove="wwwroot\cards\Q-S.png" />
+    <Content Remove="wwwroot\cards\Q-D.png" />
+    <Content Remove="wwwroot\cards\BACK.png" />
+    <Content Remove="wwwroot\cards\7-S.png" />
+    <Content Remove="wwwroot\cards\7-D.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Update="wwwroot\cards\7-H.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

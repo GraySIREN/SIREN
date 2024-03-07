@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale= 1.0">
+    <title>Black Jack</title>
+    <link rel="stylesheet" href="/css/blackjack.css">
+</head>
+
+<body>
+    <!--Parent Container-->
+    <div class="parent-game-container">
+        <div id="child1-cards">
+
+            <!-- Dealer Cards and Results -->
+            <span id="dealerName">Dealer: <span id="dealer-sum"></span></span>
+            <div id="dealer-cards" class="card-area">
+                <img id="hidden" src="/cards/BACK.png">
+            </div>
+
+            <!-- Player Cards and Results -->
+            <h2 id="userName">You: <span id="your-sum"></span></h2>
+            <div id="your-cards" class="card-area"></div>
+        </div>
+
+        <!-- Game Stats Container-->
+        <div id="child2-stats-container">
+            <div class="grid-item"><span id="roundNumber"></span></div>
+            <div class="grid-item"><span id="bankRoll"></span></div>
+            <div class="grid-item">
+                Bet Amount:
+                <select id="betAmountDropdown">
+                    <option value="5">$5</option>
+                    <option value="10">$10</option>
+                    <option value="15">$15</option>
+                    <option value="20">$20</option>
+                    <option value="25">$25</option>
+                    <option value="30">$30</option>
+                    <option value="35">$35</option>
+                    <option value="40">$40</option>
+                    <option value="45">$45</option>
+                    <option value="50">$50</option>
+                </select>
+                <button id="submit-bet" onclick="submitBet()">Bet</button>
+            </div>
+
+            <div class="grid-item"><span id="netWinLoss"></span></div>
+        </div>
+    </div>
+
+    <div>
+        <p id="results"></p>
+    </div>
+
+    <div class="button-row">
+        <button id="hit">Hit</button>
+        <button id="stand">Stand</button>
+        <button id="play-again-btn">Play Again</button>
+    </div>
+
+    <script src="/js/blackjack.js"></script>
+</body>
+</html>

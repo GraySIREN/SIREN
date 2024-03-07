@@ -1,63 +1,55 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale= 1.0">
-    <title>Black Jack</title>
-    <link rel="stylesheet" href="/css/blackjack.css">
-</head>
+﻿<style>
+    body {
+        background: linear-gradient(to bottom right, #fff, #e2efff);
+    }
+</style>
 
-<body>
-    <!--Parent Container-->
-    <div class="parent-game-container">
-        <div id="child1-cards">
+<div class="mainContainer">
+    <h2></h2>
 
-            <!-- Dealer Cards and Results -->
-            <span id="dealerName">Dealer: <span id="dealer-sum"></span></span>
-            <div id="dealer-cards" class="card-area">
-                <img id="hidden" src="/cards/BACK.png">
+    <p>@ViewData["CurriculumInfo"]</p>
+
+    <div class="card-container">
+        <div class="card-row">
+            <div class="card">
+                <div class="card-photo">
+                    <img src="/Website_Logos/Csharp.png" alt="Photo 1">
+                </div>
+                <div class="card-content">
+                    <p>C#<br />Object-Oriented Programming (OOP)<br />Foundations and Structures</p>
+                </div>
             </div>
-
-            <!-- Player Cards and Results -->
-            <h2 id="userName">You: <span id="your-sum"></span></h2>
-            <div id="your-cards" class="card-area"></div>
         </div>
-
-        <!-- Game Stats Container-->
-        <div id="child2-stats-container">
-            <div class="grid-item"><span id="roundNumber"></span></div>
-            <div class="grid-item"><span id="bankRoll"></span></div>
-            <div class="grid-item">
-                    Bet Amount:
-                    <select id="betAmountDropdown">
-                        <option value="5">$5</option>
-                        <option value="10">$10</option>
-                        <option value="15">$15</option>
-                        <option value="20">$20</option>
-                        <option value="25">$25</option>
-                        <option value="30">$30</option>
-                        <option value="35">$35</option>
-                        <option value="40">$40</option>
-                        <option value="45">$45</option>
-                        <option value="50">$50</option>
-                    </select>
-                <button id="submit-bet" onclick="submitBet()">Bet</button>
+        <div class="card-row">
+            <div class="card">
+                <div class="card-photo">
+                    <img src="/Website_Logos/GitHub.png" alt="Photo 2">
+                </div>
+                <div class="card-content">
+                    <p>Version Control Systems (VC)<br />GitHub and Git<br />Source Control<br />Merge/Branch/Commit</p>
+                </div>
             </div>
-
-            <div class="grid-item"><span id="netWinLoss"></span></div>
+        </div>
+        <div class="card-row">
+            <div class="card">
+                <div class="card-photo">
+                    <img src="/Website_Logos/MVC.png" alt="Photo 3">
+                </div>
+                <div class="card-content">
+                    <p>Model View Controler (MVC) Architecture<br />Web Development Fundamentals<br />Entity Framework<br />ASP.NET</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-row">
+            <div class="card">
+                <div class="card-photo">
+                    <img src="/Website_Logos/HTML.png" alt="Photo 4">
+                </div>
+                <div class="card-content">
+                    <p>Hypertext Markup Language<br />Website Fundamentals<br />Body, Divs, and more Divs<br />Correct Structuring</p>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div>
-        <p id="results"></p>
-    </div>
-
-    <div class="button-row">
-        <button id="hit">Hit</button>
-        <button id="stand">Stand</button>
-        <button id="play-again-btn">Play Again</button>
-    </div>
-
-    <script src="/js/blackjack.js"></script>
-</body>
-</html>
+    <script src="/js/Curriculum.js"></script>
+</div>

@@ -17,12 +17,6 @@ namespace SIREN.Controllers
             _hostingEnvironment = hostingEnvironment;
         }
 
-        public ActionResult DisplayImage(string imageName)
-        {
-            string imagePath = Path.Combine(_hostingEnvironment.WebRootPath, "cards", imageName);
-            return PhysicalFile(imagePath, "image/png"); // Adjust the content type based on the image type
-        }
-
         public IActionResult Index()
         {
             return View();
@@ -30,6 +24,18 @@ namespace SIREN.Controllers
         }
 
         public IActionResult TaskManager()
+        {
+            return View();
+
+        }
+
+        public ActionResult DisplayImage(string imageName)
+        {
+            string imagePath = Path.Combine(_hostingEnvironment.WebRootPath, "cards", imageName);
+            return PhysicalFile(imagePath, "image/png");
+        }
+
+        public IActionResult Blackjack()
         {
             return View();
 

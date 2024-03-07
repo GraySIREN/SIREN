@@ -70,8 +70,6 @@ function deleteTaskRow() {
 }
 
 
-
-
 //Creating draggable element to HTML
 
 const draggables = document.querySelectorAll('.draggable')

@@ -68,7 +68,7 @@ function startGame() {
     dealerAceCount += checkAce(hidden);
 
     //Comment out once deployed
-    console.log("HIDDEN: " + hidden);//
+    console.log("HIDDEN: " + hidden);
 
     setTimeout(function () {
         dealCardAnimation("dealer-cards", hidden);
@@ -107,7 +107,7 @@ function hit() {
 
     let cardImg = document.createElement("img");
     let card = deck.pop();
-    cardImg.src = "/cards/" + card + ".png";
+    cardImg.src = "/wwwroot/cards/" + card + ".png";
     yourSum += getValue(card);
     yourAceCount += checkAce(card);
     document.getElementById("your-cards").append(cardImg);
@@ -202,7 +202,7 @@ function resetGame() {
     document.getElementById("your-sum").innerText = "";
 
     let hiddenCardImg = document.createElement("img");
-    hiddenCardImg.src = "./cards/BACK.png";
+    hiddenCardImg.src = "/wwwroot/cards/BACK.png";
     document.getElementById("dealer-cards").appendChild(hiddenCardImg);
 
     document.getElementById("roundNumber").innerText = "Round: " + roundNumber;
@@ -278,7 +278,7 @@ function calculateNetWinLoss() {
 function dealCardAnimation(containerId, card) {
     let container = document.getElementById(containerId);
     let cardImg = document.createElement("img");
-    cardImg.src = "./cards/" + card + ".png";
+    cardImg.src = "/wwwroot/cards/" + card + ".png";
     cardImg.classList.add("card");
 
     let cardRow;

@@ -13,89 +13,35 @@
     <PackageReference Include="jQuery" Version="3.7.1" />
   </ItemGroup>
   <ItemGroup>
-    <Content Remove="wwwroot\cards\7-H.png" />
-    <Content Remove="wwwroot\cards\9-S.png" />
-    <Content Remove="wwwroot\cards\9-D.png" />
-    <Content Remove="wwwroot\cards\5-H.png" />
-    <Content Remove="wwwroot\cards\J-H.png" />
-    <Content Remove="wwwroot\cards\Q-H.png" />
-    <Content Remove="wwwroot\cards\9-C.png" />
-    <Content Remove="wwwroot\cards\3-H.png" />
-    <Content Remove="wwwroot\cards\8-S.png" />
-    <Content Remove="wwwroot\cards\8-D.png" />
-    <Content Remove="wwwroot\cards\10-C.png" />
-    <Content Remove="wwwroot\cards\K-H.png" />
-    <Content Remove="wwwroot\cards\4-H.png" />
-    <Content Remove="wwwroot\cards\A-C.png" />
-    <Content Remove="wwwroot\cards\6-H.png" />
-    <Content Remove="wwwroot\cards\A-D.png" />
-    <Content Remove="wwwroot\cards\A-S.png" />
-    <Content Remove="wwwroot\cards\10-S.png" />
-    <Content Remove="wwwroot\cards\10-D.png" />
-    <Content Remove="wwwroot\cards\2-H.png" />
-    <Content Remove="wwwroot\cards\8-C.png" />
-    <Content Remove="wwwroot\cards\6-C.png" />
-    <Content Remove="wwwroot\cards\A-H.png" />
-    <Content Remove="wwwroot\cards\4-C.png" />
-    <Content Remove="wwwroot\cards\K-C.png" />
-    <Content Remove="wwwroot\cards\10-H.png" />
-    <Content Remove="wwwroot\cards\2-S.png" />
-    <Content Remove="wwwroot\cards\2-D.png" />
-    <Content Remove="wwwroot\cards\6-S.png" />
-    <Content Remove="wwwroot\cards\6-D.png" />
-    <Content Remove="wwwroot\cards\8-H.png" />
-    <Content Remove="wwwroot\cards\2-C.png" />
-    <Content Remove="wwwroot\cards\K-D.png" />
-    <Content Remove="wwwroot\cards\K-S.png" />
-    <Content Remove="wwwroot\cards\4-D.png" />
-    <Content Remove="wwwroot\cards\4-S.png" />
-    <Content Remove="wwwroot\cards\Q-C.png" />
-    <Content Remove="wwwroot\cards\J-C.png" />
-    <Content Remove="wwwroot\cards\5-C.png" />
-    <Content Remove="wwwroot\cards\3-S.png" />
-    <Content Remove="wwwroot\cards\J-B.png" />
-    <Content Remove="wwwroot\cards\3-D.png" />
-    <Content Remove="wwwroot\cards\7-C.png" />
-    <Content Remove="wwwroot\cards\J-R.png" />
-    <Content Remove="wwwroot\cards\3-C.png" />
-    <Content Remove="wwwroot\cards\9-H.png" />
-    <Content Remove="wwwroot\cards\5-D.png" />
-    <Content Remove="wwwroot\cards\5-S.png" />
-    <Content Remove="wwwroot\cards\J-D.png" />
-    <Content Remove="wwwroot\cards\J-S.png" />
-    <Content Remove="wwwroot\cards\Q-S.png" />
-    <Content Remove="wwwroot\cards\Q-D.png" />
-    <Content Remove="wwwroot\cards\BACK.png" />
-    <Content Remove="wwwroot\cards\7-S.png" />
-    <Content Remove="wwwroot\cards\7-D.png" />
+    <Content Remove="wwwroot\cards\" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="wwwroot\cards\7-H.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>7-H.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\9-S.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>9-S.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\9-D.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>9-D.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\5-H.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>5-H.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\J-H.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>J-H.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\Q-H.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>Q-H.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\9-C.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>9-C.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\3-H.png">
@@ -103,11 +49,11 @@
       <LogicalName>3-H.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\8-S.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>8-S.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\8-D.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>8-D.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\10-C.png">
@@ -115,7 +61,7 @@
       <LogicalName>10-C.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\K-H.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>K-H.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\4-H.png">
@@ -123,19 +69,19 @@
       <LogicalName>4-H.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\A-C.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>A-C.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\6-H.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>6-H.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\A-D.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>A-D.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\A-S.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>A-S.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\10-S.png">
@@ -151,15 +97,15 @@
       <LogicalName>2-H.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\8-C.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>8-C.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\6-C.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>6-C.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\A-H.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>A-H.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\4-C.png">
@@ -167,7 +113,7 @@
       <LogicalName>4-C.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\K-C.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>K-C.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\10-H.png">
@@ -183,15 +129,15 @@
       <LogicalName>2-D.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\6-S.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>6-S.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\6-D.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>6-D.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\8-H.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>8-H.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\2-C.png">
@@ -199,11 +145,11 @@
       <LogicalName>2-C.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\K-D.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>K-D.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\K-S.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>K-S.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\4-D.png">
@@ -215,15 +161,15 @@
       <LogicalName>4-S.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\Q-C.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>Q-C.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\J-C.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>J-C.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\5-C.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>5-C.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\3-S.png">
@@ -231,7 +177,7 @@
       <LogicalName>3-S.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\J-B.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>J-B.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\3-D.png">
@@ -239,11 +185,11 @@
       <LogicalName>3-D.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\7-C.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>7-C.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\J-R.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>J-R.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\3-C.png">
@@ -251,44 +197,47 @@
       <LogicalName>3-C.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\9-H.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>9-H.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\5-D.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>5-D.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\5-S.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>5-S.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\J-D.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>J-D.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\J-S.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>J-S.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\Q-S.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>Q-S.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\Q-D.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>Q-D.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\BACK.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>BACK.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\7-S.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>7-S.png</LogicalName>
     </Content>
     <Content Update="wwwroot\cards\7-D.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LogicalName>7-D.png</LogicalName>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\cards\" />
   </ItemGroup>
 </Project>

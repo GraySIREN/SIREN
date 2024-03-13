@@ -27,6 +27,14 @@ body {
     border: var(--theme-border-color);
 }
 
+#row-buttons {
+    background-color: grey;
+    color: black;
+    border: solid 2px black;
+    border-radius: 25px;
+
+}
+
 #task-manager-template {
     display: flex;
     width: 100%;

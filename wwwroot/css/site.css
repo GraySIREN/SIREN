@@ -4,16 +4,16 @@
     align-items: center;
 }
 
-.card-row {
+.cards-row {
     display: flex;
     margin-bottom: 20px;
     width: 60%;
 }
 
-    .card-row:nth-child(even) {
+    .cards-row:nth-child(even) {
         justify-content: flex-end;
     }
-    .card-row:nth-child(odd) {
+    .cards-row:nth-child(odd) {
         justify-content: flex-start;
     }
 

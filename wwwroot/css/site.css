@@ -1,4 +1,34 @@
-﻿.card-container {
+﻿/*Navigation Bar*/
+/*.container-fluid {
+    background:;
+    margin: 3px;
+    border: 1px solid black;
+    border-radius: 25px;
+}*/
+
+.banner {
+    position: relative;
+    width: 100%;
+    background-image: url('/Website_Banners/Buildings_01.png');
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    border: solid 1px grey;
+    border-radius: 15px;
+    margin-bottom: 25px;
+}
+
+.banner-content {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    color: white;
+    padding: 15px;
+    height: 100%;
+    transform: translateY(-25%);
+}
+
+.card-container {
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -69,6 +69,11 @@
     <Content Remove="wwwroot\cards\Q-D.png" />
     <Content Remove="wwwroot\cards\Q-H.png" />
     <Content Remove="wwwroot\cards\Q-S.png" />
+    <Content Remove="wwwroot\Website_Banners\Buildings_01.png" />
+    <Content Remove="wwwroot\Website_Banners\Buildings_02.png" />
+    <Content Remove="wwwroot\Website_Banners\Desk_01.png" />
+    <Content Remove="wwwroot\Website_Banners\Desk_02.png" />
+    <Content Remove="wwwroot\Website_Banners\Screen.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="wwwroot\cards\7-H.png">
@@ -290,6 +295,21 @@
     <Content Update="wwwroot\cards\7-D.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <LogicalName>7-D.png</LogicalName>
+    </Content>
+    <Content Update="wwwroot\Website_Banners\Buildings_01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Website_Banners\Buildings_02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Website_Banners\Desk_01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Website_Banners\Desk_02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Website_Banners\Screen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -570,6 +590,31 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wwwroot\Website_Banners\Buildings_01.png">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wwwroot\Website_Banners\Buildings_02.png">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wwwroot\Website_Banners\Desk_01.png">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wwwroot\Website_Banners\Desk_02.png">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wwwroot\Website_Banners\Screen.png">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

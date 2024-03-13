@@ -27,13 +27,21 @@ body {
     border: var(--theme-border-color);
 }
 
-#row-buttons {
-    background-color: grey;
-    color: black;
-    border: solid 2px black;
+#row-buttons button {
+    background-color: var(--theme-page-background-color);
+    color: var(--theme-text-color);
+    border: solid 2px var(--theme-border-color);
     border-radius: 25px;
-
+    margin: 7px;
 }
+
+    #row-buttons button:hover {
+        background-color: var(--theme-grid-item-hover-background-color);
+        color: var(--theme-grid-item-hover-text-color);
+        transform: scale(1.13);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        font-size: 1.01em;
+    }
 
 #task-manager-template {
     display: flex;

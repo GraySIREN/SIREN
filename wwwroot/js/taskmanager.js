@@ -68,13 +68,14 @@ function addTaskRow() {
 
 function deleteTaskRow() {
     // Get the grid container
-    const gridContainer = document.getElementById('task-container');
+    const taskContainer = document.querySelector('.task-container');
 
     // Remove the last task grid item if it exists
-    if (gridContainer.lastElementChild.classList === 'draggable') {
-        gridContainer.removeChild(gridContainer.lastElementChild);
+    if (taskContainer.lastElementChild.classList.contains('draggable')) {
+        taskContainer.removeChild(taskContainer.lastElementChild);
     }
 }
+
 
 //Creating draggable element to HTML
 

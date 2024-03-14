@@ -1,6 +1,24 @@
-﻿/*Navigation Bar*/
+﻿/* Styling for the navbar items */
+.navbar-nav .nav-item {
+    margin-right: 10px;
+}
+
+    .navbar-nav .nav-item .nav-link {
+        color: black !important;
+        background-color: transparent;
+        padding: 10px 15px;
+        border-left: .3px solid grey;
+        transition: all 0.3s ease;
+    }
+
+        .navbar-nav .nav-item .nav-link:hover {
+            color: lightgrey !important;
+            transform: scale(1.05);
+        }
+
+
 .container-fluid {
-    background: white;
+    background: #4c6e8c;
     margin: 3px;
     border: 1px solid black;
     border-radius: 5px;
@@ -42,12 +60,11 @@
     text-shadow: -.5px -.5px 0 #000, .5px -.5px 0 #000, -.5px .5px 0 #000, .5px .5px 0 #000;
 }
 
-
-/*.card-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}*/
+.card-container {
+    display: inline-flex;
+    flex-direction: row;
+    scroll-snap-align: start;
+}
 
 .cards-row {
     display: flex;
@@ -79,6 +96,12 @@
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
+.card-photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
 .card-photo {
     background-color: white;
     grid-column: 1;
@@ -107,12 +130,6 @@
     padding: 20px;
 }
 
-.card-photo img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-}
-
 .card-content p {
     font-size: 16px;
     line-height: 1.5;
@@ -121,17 +138,9 @@
 .card-carousel {
     overflow-x: auto;
     white-space: nowrap;
-    scrollbar-width: none; /* For Firefox */
-    -ms-overflow-style: none; /* For Internet Explorer 10+ */
     scroll-snap-type: x mandatory;
 }
 
     .card-carousel::-webkit-scrollbar {
-        display: none; /* For Chrome, Safari, and Opera */
+        display: none;
     }
-
-.card-container {
-    display: inline-flex;
-    flex-direction: row;
-    scroll-snap-align: start;
-}

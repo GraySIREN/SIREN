@@ -1,11 +1,11 @@
 ﻿:root {
 /*         Default theme properties */
     --theme-page-background-color: #F2F2F2;
-    --theme-grid-container-background-color: #F2F2F2;
+    --theme-task-container-background-color: #F2F2F2;
     --theme-text-color: #262626;
     --theme-border-color: #737373;
-    --theme-grid-item-hover-text-color: #262626;
-    --theme-grid-item-hover-background-color: #BFBFBF;
+    --theme-draggable-hover-text-color: #262626;
+    --theme-draggable-hover-background-color: #BFBFBF;
 }
 
 body {
@@ -36,8 +36,9 @@ body {
 }
 
     #row-buttons button:hover {
-        background-color: var(--theme-grid-item-hover-background-color);
-        color: var(--theme-grid-item-hover-text-color);
+        background-color: var(--theme-draggable-hover-background-color);
+        color: var(--theme-draggable-hover-text-color);
+
         transform: scale(1.13);
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         font-size: 1.01em;
@@ -60,13 +61,13 @@ body {
     grid-template-rows: repeat(8, 1fr);
     border: solid 3px var(--theme-border-color);
     border-radius: 25px;
-    background-color: var(--theme-grid-container-background-color);
+    background-color: var(--theme-task-container-background-color);
     justify-content: center;
     align-items: center;
 }
 
-#grid-item-head,
-#grid-item {
+#grid-head,
+.draggable {
     font-size: large;
     width: 750px;
     height: 75px;
@@ -79,20 +80,20 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--theme-grid-container-background-color);
+    background-color: var(--theme-task-container-background-color);
     color: var(--theme-text-color);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-    #grid-item:hover {
-        background-color: var(--theme-grid-item-hover-background-color);
-        color: var(--theme-grid-item-hover-text-color);
+    .draggable:hover {
+        background-color: var(--theme-draggable-hover-background-color);
+        color: var(--theme-draggable-hover-text-color);
         transform: scale(1.13);
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         font-size: 1.5em;
     }
 
-    #grid-item.dragging {
+    .draggable.dragging {
         opacity: 0.5;
     }
 

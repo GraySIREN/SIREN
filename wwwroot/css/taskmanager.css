@@ -52,7 +52,7 @@ body {
     align-items: center;
 }
 
-#grid-container {
+#task-container {
     height: auto;
     display: grid;
     padding: 1rem;

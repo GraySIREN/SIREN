@@ -39,15 +39,15 @@
     padding: 15px;
     text-align: left;
     z-index: 1;
-    text-shadow: -.1px -.1px 0 #000, .1px -.1px 0 #000, -.1px .1px 0 #000, .1px .1px 0 #000;
+    text-shadow: -.5px -.5px 0 #000, .5px -.5px 0 #000, -.5px .5px 0 #000, .5px .5px 0 #000;
 }
 
 
-.card-container {
+/*.card-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+}*/
 
 .cards-row {
     display: flex;
@@ -63,6 +63,7 @@
     }
 
 .cards {
+    margin: 20px 20px;
     display: grid;
     grid-template-columns: 2fr;
     grid-template-rows: 1fr;
@@ -70,7 +71,7 @@
     border: 1.5px solid black;
     border-radius: 25px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.5s ease, box-shadow 0.5s ease, filter 0.5s ease;
 }
 
     .cards:hover {
@@ -115,4 +116,22 @@
 .card-content p {
     font-size: 16px;
     line-height: 1.5;
+}
+
+.card-carousel {
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer 10+ */
+    scroll-snap-type: x mandatory;
+}
+
+    .card-carousel::-webkit-scrollbar {
+        display: none; /* For Chrome, Safari, and Opera */
+    }
+
+.card-container {
+    display: inline-flex;
+    flex-direction: row;
+    scroll-snap-align: start;
 }

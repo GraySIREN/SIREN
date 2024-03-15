@@ -3,7 +3,7 @@
     height: auto;
 }
 
-.trackr-container {
+.trackm-container {
     position: relative;
     color: grey;
     background-color: #383B43;
@@ -17,7 +17,7 @@
     border-radius: 15px;
 }
 
-.trackr-item {
+.trackm-item {
     color: #F1942A;
     font-size: 15px;
     padding: 3px;
@@ -28,18 +28,18 @@
     align-items: center;
 }
 
-#trackr1 {
+#trackm1 {
     grid-column: 1;
     grid-row: 1 / span 4;
 }
 
-#trackr2 {
+#trackm2 {
     position: relative;
     grid-column: 2 / span 3;
     grid-row: 1 / span 3;
 }
 
-    #trackr2 .bar {
+    #trackm2 .bar {
         left: calc((100% / 7) * (var(--index) - .9)); /* Distribute bars horizontally */
     }
 
@@ -64,7 +64,7 @@
         align-items: flex-start;
     }
 
-#trackr3 {
+#trackm3 {
     display: flex;
     flex-direction: column;
     grid-column: 5 / span 1;
@@ -86,18 +86,18 @@
         flex-direction: column;
 }
 
-#trackr4 {
+#trackm4 {
     grid-column: 2 / span 3;
     grid-row: 4;
 }
 
-#trackr5 {
+#trackm5 {
     grid-column: 5;
     grid-row: 3 / span 2;
 
 }
 
-#trackr6 {
+#trackm6 {
     grid-column: 1 / span 5;
     grid-row: 5;
 }

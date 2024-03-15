@@ -13,27 +13,29 @@
     gap: .5px;
     width: 720px;
     height: 720px;
-    border: 1.75px solid black;
+    border: 1.75px solid transparent;
     border-radius: 25px;
 }
 
 .trackm-item {
-    color: #F1942A;
+    background-image: linear-gradient(to right, #9c2867, #F1942A);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text; /*As long as this specific order in use, can ignore this error.*/
     font-size: 15px;
     margin: 1.5px;
     padding: 3px;
-    border: 1.25px solid #F1942A;
-    border-radius: 20px;
     justify-content: center;
     display: flex;
     align-items: center;
+    border: 1.25px solid #F1942A;
+    border-radius: 20px;
 }
 
 #trackm1 {
     position: relative;
     grid-column: 1;
     grid-row: 1 / span 4;
-    bottom: 0; /* Bar starts from the bottom of the container */
+    bottom: 0;
     display: flex;
     align-items: center;
 }
@@ -71,7 +73,7 @@
     bottom: 0;
     gap: 5px;
     width: calc(80% / 7);
-    border: 1px solid grey;
+    border: 1px solid #F1942A;
     border-radius: 15px;
     display: flex;
     justify-content: center;

@@ -6,31 +6,44 @@
 .trackm-container {
     position: relative;
     color: grey;
-    background-color: #383B43;
+    background: linear-gradient(to bottom right, #2f3136,#333438);
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
-    gap: 3px;
+    gap: .5px;
     width: 720px;
     height: 720px;
-    border: 3px solid black;
-    border-radius: 15px;
+    border: 1.75px solid black;
+    border-radius: 25px;
 }
 
 .trackm-item {
     color: #F1942A;
     font-size: 15px;
+    margin: 1.5px;
     padding: 3px;
-    border: 1px solid #F1942A;
-    border-radius: 10px;
+    border: 1.25px solid #F1942A;
+    border-radius: 20px;
     justify-content: center;
     display: flex;
     align-items: center;
 }
 
 #trackm1 {
+    position: relative;
     grid-column: 1;
     grid-row: 1 / span 4;
+    bottom: 0; /* Bar starts from the bottom of the container */
+    display: flex;
+    align-items: center;
+}
+
+#today-actvs {
+    position: absolute;
+    bottom: 0;
+    height: var(--bar-height);
+    width: 45px;
+    left: 33.3333%;
 }
 
 #trackm2 {
@@ -49,20 +62,22 @@
         height: 100%;
     }
 
-    .bar {
-        color: #383B43;
-        position: absolute;
-        justify-self: center;
-        bottom: 0;
-        gap: 5px;
-        width: calc(80% / 7);
-        background-color: #F1942A;
-        border: 1px solid grey;
-        border-radius: 15px;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-    }
+.bar {
+    background: linear-gradient(to top right, #9c2867, #F1942A);
+    color: #383B43;
+    position: absolute;
+    justify-self: center;
+    padding: 10px;
+    bottom: 0;
+    gap: 5px;
+    width: calc(80% / 7);
+    border: 1px solid grey;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: var(--bar-height); /* Set the height of the bar */
+}
 
 #trackm3 {
     display: flex;

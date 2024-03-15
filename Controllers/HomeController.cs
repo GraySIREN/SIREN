@@ -35,6 +35,12 @@ namespace SIREN.Controllers
             return PhysicalFile(imagePath, "image/png");
         }
 
+        public IActionResult Activity_Tracker()
+        {
+            return View();
+
+        }
+
         public IActionResult Blackjack()
         {
             return View();

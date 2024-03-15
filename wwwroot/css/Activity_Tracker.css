@@ -22,7 +22,7 @@
     background-image: linear-gradient(to right, #9c2867, #F1942A);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
-    margin: 1.5px;
+    margin: 3px;
     padding: 3px;
     justify-content: center;
     display: flex;
@@ -39,6 +39,76 @@
 #activites {
     margin-top: 5px;
 }
+
+.tick-mark {
+    position: absolute;
+    left: 12.5px;
+    height: 1px;
+    width: 7px;
+    background-color: #F1942A;
+}
+.tick-mark:nth-child(n) {
+    top: calc((100% / 31 * (var(--tick-index) + 1)) - 22px);
+}
+    .tick-mark:nth-child(31) {
+        width: 23px;
+    }
+    .tick-mark:nth-child(21) {
+        width: 20px;
+    }
+    .tick-mark:nth-child(11) {
+        width: 23px;
+    }
+    .tick-mark:nth-child(1) {
+        width: 23px;
+    }
+    /**************************/
+    .tick-mark:nth-child(6) {
+        width: 15px;
+    }
+    .tick-mark:nth-child(16) {
+        width: 15px;
+    }
+    .tick-mark:nth-child(26) {
+        width: 15px;
+    }
+    /***************************/
+    .tick-mark:nth-child(3) {
+        width: 3px;
+    }
+    .tick-mark:nth-child(4) {
+        width: 3px;
+    }
+    .tick-mark:nth-child(8) {
+        width: 3px;
+    }
+    .tick-mark:nth-child(9) {
+        width: 3px;
+    }
+    .tick-mark:nth-child(13) {
+        width: 3px;
+    }
+    .tick-mark:nth-child(14) {
+        width: 3px;
+    }
+    .tick-mark:nth-child(18) {
+        width: 3px;
+    }
+    .tick-mark:nth-child(19) {
+        width: 3px;
+    }
+    .tick-mark:nth-child(23) {
+        width: 3px;
+    }
+    .tick-mark:nth-child(24) {
+        width: 3px;
+    }
+    .tick-mark:nth-child(28) {
+        width: 3px;
+    }
+    .tick-mark:nth-child(29) {
+        width: 3px;
+    }
 
 .btn {
     color: #F1942A;
@@ -70,7 +140,6 @@
     justify-self: center;
     padding: 10px;
     bottom: 0;
-    margin-bottom: 20px;
     gap: 5px;
     width: calc(80% / 7);
     border: 1px solid #F1942A;
@@ -110,7 +179,7 @@
 
 .divider {
     height: 80px;
-    width: 1.3px;
+    width: 1px;
     background-color: #888686;
     margin: 10px;
     border: 1px solid transparent;

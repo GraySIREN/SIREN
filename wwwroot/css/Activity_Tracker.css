@@ -326,28 +326,32 @@
 #trackm5 {
     grid-column: 5;
     grid-row: 3 / span 2;
-    overflow-y: scroll;
-    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
-
 .icon-bank {
-    font-size: 16px;
+    width: auto;
+    font-size: 18px;
     columns: 2;
     list-style: none;
-    padding: 5px;
-    overflow-y: auto;
-}
+    padding-left: 0rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 
-    .icon-bank i {
-        margin: 10px;
-        margin-bottom: 25px;
+}
+    .icon-bank::-webkit-scrollbar {
+        display: none;
     }
-#trackm5::-webkit-scrollbar {
-    display: none;
-}
-
+    .icon-bank i {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 6px;
+        margin: 15px;
+    }
 
 #trackm6 {
     grid-column: 1 / span 5;

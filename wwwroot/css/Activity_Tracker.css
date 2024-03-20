@@ -12,10 +12,11 @@
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
     gap: 1px;
-    width: 720px;
-    height: 720px;
+    width: 1000px;
+    height: 1000px;
     border: 1.75px solid transparent;
     border-radius: 25px;
+    transform: scale(0.75);
 }
 
 .trackm-item {
@@ -112,15 +113,6 @@
     .tick-markv:nth-child(29) {
         width: 3px;
     }
-
-/*.btn {
-    color: #F1942A;
-    background-color: transparent;
-    margin: 5px;
-    border: 2px solid #F1942A;
-    border-radius: 15px;
-    transition: transform 0.3s ease-in-out;
-}*/
 
     .btn:hover {
         transform: scale(1.1);
@@ -275,10 +267,27 @@
 
 #trackm3 {
     display: flex;
-    flex-direction: column;
     grid-column: 5 / span 1;
-    grid-row: 1 / span 2;
+/*    grid-row: 1 / span 2;*/
 }
+
+.trackm3-statistics {
+    display: flow;
+    flex-direction: column;
+    font-size: 12px;
+    margin: 3px;
+    padding: 3px;
+}
+    .trackm3-statistics p {
+        font-size: 14px;
+        display: flow;
+        text-align: left;
+    }
+    .trackm3-statistics span {
+        font-size: 12px;
+        display: flow;
+        text-align: right;
+    }
 
 #trackm4 {
     grid-column: 2 / span 3;
@@ -329,29 +338,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
 }
-.icon-bank {
-    width: auto;
-    font-size: 18px;
-    columns: 2;
-    list-style: none;
-    padding-left: 0rem;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-
-}
-    .icon-bank::-webkit-scrollbar {
-        display: none;
-    }
-    .icon-bank i {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 6px;
-        margin: 15px;
-    }
 
 #trackm6 {
     grid-column: 1 / span 5;

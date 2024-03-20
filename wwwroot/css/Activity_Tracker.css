@@ -1,5 +1,5 @@
 ﻿body {
-    font-family: 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
     width: auto;
     height: auto;
 }
@@ -12,11 +12,10 @@
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
     gap: 1px;
-    width: 1000px;
-    height: 1000px;
+    width: 800px;
+    height: 800px;
     border: 1.75px solid transparent;
     border-radius: 25px;
-    transform: scale(0.75);
 }
 
 .trackm-item {

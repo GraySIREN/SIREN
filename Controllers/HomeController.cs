@@ -41,6 +41,12 @@ namespace SIREN.Controllers
 
         }
 
+        public IActionResult CAD_Creations()
+        {
+            return View();
+
+        }
+
         public IActionResult Blackjack()
         {
             return View();

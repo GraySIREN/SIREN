@@ -60,7 +60,7 @@ body {
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(8, 1fr);
     border: solid 3px var(--theme-border-color);
-    border-radius: 25px;
+    border-radius: 20px;
     background-color: var(--theme-task-container-background-color);
     justify-content: center;
     align-items: center;
@@ -76,7 +76,7 @@ body {
     gap: 25px;
     margin: 10px;
     border: solid 3px var(--theme-border-color);
-    border-radius: 25px;
+    border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,5 +94,5 @@ body {
     }
 
     .draggable.dragging {
-        opacity: 0.5;
+        opacity: 0.45;
     }

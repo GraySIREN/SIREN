@@ -44,6 +44,13 @@ function setTheme(theme) {
         document.documentElement.style.setProperty('--theme-border-color', '#F2F2BF');
         document.documentElement.style.setProperty('--theme-draggable-hover-background-color', '#024959');
         document.documentElement.style.setProperty('--theme-draggable-hover-text-color', '#F24C27');
+    } else if (theme === 'theme7') { //Earth
+    document.documentElement.style.setProperty('--theme-page-background-color', '#40CA6A');
+    document.documentElement.style.setProperty('--theme-task-container-background-color', '#4DA066');
+    document.documentElement.style.setProperty('--theme-text-color', '#3D4B41');
+    document.documentElement.style.setProperty('--theme-border-color', '#4C7559');
+        document.documentElement.style.setProperty('--theme-draggable-hover-background-color', '#4DA066');
+    document.documentElement.style.setProperty('--theme-draggable-hover-text-color', '#24F563');
     }
 }
 

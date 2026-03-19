@@ -7,52 +7,37 @@
     <link rel="stylesheet" href="/css/3d_creations.css">
 </head>
 
-    <body>
+<body>
+    <div class="card-carousel">
+        <h2 class="mb-4">CAD Creations Gallery</h2>
 
-        <div class="banner">
-            <div class="banner-bg"></div>
-            <div class="banner-content">
-                <h1>Artistic Expressions through various Mediums</h1>
-                <p>Explore the topics below to learn more, and have fun!</p>
-            </div>
-        </div>
+        @* Generate 3 Rows *@
+        @for (int i = 1; i <= 3; i++)
+        {
+            <div class="row-wrapper mb-5">
+                <h4 class="text-muted mb-3">Category @i</h4>
 
-        <div class="card-carousel">
-            <div class="card-container">
-                <div class="cards-row">
-                    <div class="cards">
-                        <div class="card-photo">
-                            <img src="/Website_Logos/Csharp.png" alt="Photo 1">
-                        </div>
-                        <div class="card-content">
-                            <p>C#<br />Object-Oriented Programming (OOP)<br />Foundations and Structures</p>
-                        </div>
-                    </div>
-                </div>
+                @* The scrollable container *@
+                <div class="card-carousel d-flex flex-nowrap overflow-auto shadow-sm p-3 bg-light rounded">
 
-                <div class="cards-row">
-                    <div class="cards">
-                        <div class="card-photo">
-                            <img src="/Website_Logos/GitHub.png" alt="Photo 2">
+                    @* Generate 9 Columns/Items per row *@
+                    @for (int j = 1; j <= 9; j++)
+                    {
+                        <div class="card-item mx-2" style="min-width: 200px;">
+                            <div class="card h-100">
+                                <img src="https://placehold.co/300x200?text=CAD+Model+@j"
+                                     class="card-img-top"
+                                     alt="Placeholder for CAD Image @j">
+                                <div class="card-body text-center">
+                                    <p class="card-text">Item @j</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-content">
-                            <p>Version Control Systems (VC)<br />GitHub and Git<br />Source Control<br />Merge/Branch/Commit</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cards-row">
-                    <div class="cards">
-                        <div class="card-photo">
-                            <img src="/Website_Logos/MVC.png" alt="Photo 3">
-                        </div>
-                        <div class="card-content">
-                            <p>Model View Controler (MVC) Architecture<br />Web Development Fundamentals<br />Entity Framework<br />ASP.NET</p>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
-        </div>
-    </body>
+        }
+    </div>
+</body>
 </html>
 

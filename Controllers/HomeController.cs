@@ -58,6 +58,12 @@ namespace SIREN.Controllers
             return View();
         }
 
+        public IActionResult Monthly_Tracker()
+        {
+            return View();
+
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

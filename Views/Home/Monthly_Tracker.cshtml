@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale= 1.0">
+    <title>Monthly_Tracker</title>
+    <link rel="stylesheet" href="/css/Monthly_Tracker.css">
+</head>
+
+<body>
+    <h2>Moon Phases + ()</h2>
+    <div class="calendar-container shadow-sm mt-4">
+        <div class="calendar-header d-flex justify-content-between align-items-center p-3">
+            <button class="btn btn-outline-primary">&lt; Prev</button>
+            <h2 class="mb-0">March 2026</h2>
+            <button class="btn btn-outline-primary">Next &gt;</button>
+        </div>
+
+        <div class="calendar-weekdays bg-light border-bottom">
+            <div>Sunday</div><div>Monday</div><div>Tuesday</div><div>Wednesday</div><div>Thursday</div><div>Friday</div><div>Saturday</div>
+        </div>
+
+        <div class="calendar-grid">
+            @* Example: Empty slots for the start of the month (if March starts on Sunday, 0 slots) *@
+            @* We will use 31 placeholder days for this example *@
+            @for (int day = 1; day <= 31; day++)
+            {
+                <div class="calendar-day">
+                    <span class="day-number">@day</span>
+                    <div class="day-content">
+                        @* This is where your tracking data goes *@
+                        @if (day == 15)
+                        {
+                            <span class="badge bg-success">CAD Project Done</span>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>

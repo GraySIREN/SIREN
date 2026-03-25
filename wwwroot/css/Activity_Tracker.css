@@ -22,7 +22,7 @@
     background-color: transparent;
     background-image: linear-gradient(to top right, #9c2867, #F1942A);
     -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
+    *-webkit-background-clip: text;
     margin: 3px;
     padding: 3px;
     justify-content: center;

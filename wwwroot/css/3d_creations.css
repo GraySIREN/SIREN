@@ -1,0 +1,11 @@
+﻿body {
+}
+
+.blank-circle {
+    width: 200px; /* Set your size */
+    height: 200px; /* Width and Height must be equal */
+    background-color: #eee; /* The color of the circle */
+    border: 2px solid #ccc; /* Optional border */
+    border-radius: 50%; /* This is the magic that makes it a circle */
+    display: inline-block;
+}

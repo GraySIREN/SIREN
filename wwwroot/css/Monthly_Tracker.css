@@ -1,0 +1,69 @@
+﻿body {
+    background-color: #1c0c1b;
+    color: #ed1aa3;
+}
+/* Container styling */
+.calendar-container {
+    background: #401537;
+    border: 1px solid #ed1aa3;
+    border-radius: 8px;
+    overflow: hidden;
+    color: #ed1aa3; /* Ensuring text is visible */
+}
+
+/* 7-column setup for Weekdays */
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+/* 7-column setup for the Days Grid */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    /* This creates a minimum height for the rows so they look like squares */
+    grid-auto-rows: minmax(120px, auto);
+}
+
+/* Individual Day Styling */
+.calendar-day {
+    border-right: 1px solid #ed1aa3;
+    border-bottom: 1px solid #ed1aa3;
+    border-radius: 10px;
+    padding: 10px;
+    transition: background 0.2s;
+}
+
+    .calendar-day:hover {
+        background-color: #bf3064;
+        text-shadow: 0 0 10px #ed1aa3, 0 0 20px #ed1aa3; /* Intense glow */
+        transform: scale(1.1); /* Slightly enlarge the number */
+        display: inline-block; /* Required for transform to work */
+        transition: all 0.3s ease;
+    }
+
+.day-number {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #ed1aa3;
+}
+
+.day-content {
+    margin-top: 5px;
+    font-size: 0.8rem;
+}
+
+.btn-outline-primary {
+    color: #ed1aa3;
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+    .btn-outline-primary:hover {
+        color: #ed1aa3;
+        background-color: #1c0c1b;
+        border: 2px solid #ed1aa3;
+    }

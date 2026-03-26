@@ -11,18 +11,60 @@ var bankRoll = 0;
 var betAmount = 0;
 var netWinLoss = 0;
 var roundWinLoss = 0;
+var gameStarted = false;
+var dealingStarted = false;
+// placeholder keeper removed; placeholder is managed on load/reset only
+var betPlaced = false;
+var revealDealerTotal = false;
+var dealerFaceUpSum = 0;
+var dealerFaceUpAceCount = 0;
+var dealerVisibleSum = 0;
+var dealerVisibleAceCount = 0;
 
-document.getElementById("roundNumber").innerHTML = "Round: " + roundNumber;
-document.getElementById("netWinLoss").innerHTML = "Net Win/Loss: $0"
+// initial DOM updates moved into window.onload to avoid null reference if script runs early
 
 window.onload = function () {
+    document.getElementById("roundNumber").innerHTML = "Round: " + roundNumber;
+    document.getElementById("netWinLoss").innerHTML = "Net Win/Loss: $0";
     promptBuyIn();
     document.getElementById("results").innerHTML = "Please submit your bet now.";
     // Need to create a function, or edit existing, to force player to submit a bet before anything else can be done in the game.
 
+    // Prepare deck but do not deal until a bet is submitted
     buildDeck();
     shuffleDeck();
-    startGame();
+    // Ensure player card area is empty before betting (dealer placeholder is static in HTML)
+    document.getElementById("your-cards").innerHTML = "";
+    // ensure a placeholder exists inside dealer area
+    var dealerAreaInit = document.getElementById('dealer-cards');
+    if (dealerAreaInit && !document.getElementById('hidden-card-placeholder')) {
+        var rowInit = document.createElement('div');
+        rowInit.className = 'card-row';
+        var placeholderInit = document.createElement('img');
+        placeholderInit.id = 'hidden-card-placeholder';
+        placeholderInit.src = '/cards/BACK.png';
+        rowInit.appendChild(placeholderInit);
+        dealerAreaInit.innerHTML = '';
+        dealerAreaInit.appendChild(rowInit);
+        console.log('blackjack: placeholder created on load');
+    }
+    // placeholder is managed on load/reset only
+    // document.getElementById("your-cards").innerHTML is already set above
+    // dealer back-card placeholder is provided statically in the HTML
+    // Disable hit/stand until round starts and attach handlers so clicks always call functions
+    var hitBtn = document.getElementById("hit");
+    var standBtn = document.getElementById("stand-btn");
+    if (hitBtn) { hitBtn.disabled = true; hitBtn.removeEventListener('click', hit); hitBtn.addEventListener('click', hit); }
+    if (standBtn) { standBtn.disabled = true; standBtn.removeEventListener('click', stand); standBtn.addEventListener('click', stand); }
+    // submit-bet button will be enabled by promptBuyIn() after a valid buy-in
+    // Wire up Play Again button
+    var playAgain = document.getElementById('play-again-btn');
+    if (playAgain) playAgain.addEventListener('click', resetGame);
+    // Ensure hit/stand handlers are attached (safe to attach early; handlers check state)
+    var hitBtnInit = document.getElementById('hit');
+    var standBtnInit = document.getElementById('stand-btn');
+    if (hitBtnInit) { hitBtnInit.removeEventListener('click', hit); hitBtnInit.addEventListener('click', hit); }
+    if (standBtnInit) { standBtnInit.removeEventListener('click', stand); standBtnInit.addEventListener('click', stand); }
 }
 
 function submitBet() {
@@ -31,7 +73,23 @@ function submitBet() {
 
     if (!isNaN(betAmount) && betAmount > 0) {
         document.getElementById("results").innerHTML = "Bet amount: $" + betAmount + ".";
-        console.log("User bets $" + betAmount + ".");
+        betPlaced = true;
+        // start the game only once a bet has been placed
+        if (!gameStarted) {
+            gameStarted = true;
+            // ensure deck is fresh for the round
+            buildDeck();
+            shuffleDeck();
+            // make sure dealing flag is cleared so startGame can proceed
+            dealingStarted = false;
+
+            // disable the bet button until round completes to prevent double bets
+            var submitBetBtn = document.getElementById('submit-bet');
+            if (submitBetBtn) submitBetBtn.disabled = true;
+
+            // small delay so user sees the placeholder before cards are dealt
+            setTimeout(function () { startGame(); }, 600);
+        }
     }
     else {
         alert("Please submit a valid bet amount.");
@@ -63,39 +121,49 @@ function shuffleDeck() {
 //In dealing cards at the start, need to define if I want all dealer cards dealt first, or after user has hit Stand.//
 
 function startGame() {
+    // Guard: do not deal if no bet has been placed
+    if (!betAmount || betAmount <= 0) {
+        document.getElementById("results").innerText = "Please submit your bet now.";
+        return;
+    }
+    if (dealingStarted) return;
+    dealingStarted = true;
+
+    // clear player cards, keep dealer back placeholder
+    document.getElementById("your-cards").innerHTML = "";
+
+    // ensure dealer placeholder exists
+    var dealerArea = document.getElementById('dealer-cards');
+    if (dealerArea && !document.getElementById('hidden-card-placeholder')) {
+        dealerArea.innerHTML = '';
+        var row = document.createElement('div');
+        row.className = 'card-row';
+        var ph = document.createElement('img');
+        ph.id = 'hidden-card-placeholder';
+        ph.src = '/cards/BACK.png';
+        row.appendChild(ph);
+        dealerArea.appendChild(row);
+    }
+
+    // draw facedown dealer card and store it
     hidden = deck.pop();
     dealerSum += getValue(hidden);
     dealerAceCount += checkAce(hidden);
+    var phEl = document.getElementById('hidden-card-placeholder');
+    if (phEl) phEl.dataset.hiddenCard = hidden;
 
-    //Comment out once deployed
-    console.log("HIDDEN: " + hidden);
+    // deal one dealer face-up card
+    setTimeout(function () { dealCardAnimation('dealer-cards', deck.pop()); }, 300);
 
-    setTimeout(function () {
-        dealCardAnimation("dealer-cards", hidden);
-    }, 500); 
+    // deal two player cards
+    setTimeout(function () { dealCardAnimation('your-cards', deck.pop()); }, 600);
+    setTimeout(function () { dealCardAnimation('your-cards', deck.pop()); }, 900);
 
-    setTimeout(function () {
-        dealCardAnimation("dealer-cards", deck.pop());
-    }, 1000); 
-
-    setTimeout(function () {
-        dealCardAnimation("your-cards", deck.pop());
-    }, 2000); 
-
-    setTimeout(function () {
-        dealCardAnimation("your-cards", deck.pop());
-    }, 2500);
-
-    //Comment out once deployed
-    setTimeout(function () {
-        console.log("Dealer Sum: " + dealerSum);
-        console.log("Your Sum: " + yourSum);
-    }, 3000);
-
-    document.getElementById("hit").removeEventListener("click", hit);
-    document.getElementById("stand").removeEventListener("click", stand);
-    document.getElementById("hit").addEventListener("click", hit);
-    document.getElementById("stand").addEventListener("click", stand);
+    // enable controls
+    var hitBtn = document.getElementById('hit');
+    var standBtn = document.getElementById('stand-btn');
+    if (hitBtn) { hitBtn.disabled = false; hitBtn.removeEventListener('click', hit); hitBtn.addEventListener('click', hit); }
+    if (standBtn) { standBtn.disabled = false; standBtn.removeEventListener('click', stand); standBtn.addEventListener('click', stand); }
 }
 
 function hit() {
@@ -129,64 +197,67 @@ function hit() {
 
 }
 
+function revealHidden() {
+    let cardImg = document.createElement("img");
+    let card = deck.pop();
+    cardImg.src = "/cards/" + card + ".png";
+}
+
 function stand() {
+    // Reveal dealer facedown card
+    revealHidden();
+
+    // show totals while dealer draws
+    revealDealerTotal = true;
+
+    // Adjust sums for aces
     dealerSum = reduceAce(dealerSum, dealerAceCount);
     yourSum = reduceAce(yourSum, yourAceCount);
-    netWinLoss;
 
-    let message = "";
+    // Dealer draws until 17
+    while (dealerSum < 17) {
+        var card = deck.pop();
+        console.log('blackjack: dealer draws', card);
+        dealCardAnimation('dealer-cards', card);
+        dealerSum += getValue(card);
+        dealerAceCount += checkAce(card);
+        dealerSum = reduceAce(dealerSum, dealerAceCount);
+    }
+
+    var message = '';
 
     if (yourSum > 21) {
-        canHit = false;
-        message = "You Bust! Minus $" + betAmount;
+        message = 'You Bust! Minus $' + betAmount;
         roundWinLoss = (betAmount * -1);
-        bankRoll = bankRoll - betAmount;
-        document.getElementById("bankRoll").innerText = "Bankroll: $" + bankRoll;
-        console.log(message);
-
-    }
-    else if (dealerSum > 21) {
-        message = "You win! Plus: $" + (betAmount * 2);
+        bankRoll -= betAmount;
+    } else if (dealerSum > 21) {
+        message = 'You win! Plus: $' + (betAmount * 2);
         roundWinLoss = (betAmount * 2);
-        bankRoll = bankRoll + (betAmount * 2);
-        document.getElementById("bankRoll").innerText = "Bankroll: $" + bankRoll;
-        console.log(message);
-
-    }
-    else if (yourSum == dealerSum) {
-        message = "Tie! All bets returned.";
-        bankRoll = bankRoll + betAmount;
+        bankRoll += (betAmount * 2);
+    } else if (yourSum == dealerSum) {
+        message = 'Tie! All bets returned.';
+        bankRoll += betAmount;
         roundWinLoss = 0;
-        document.getElementById("bankRoll").innerText = "Bankroll: $" + bankRoll;
-        console.log(message);
-
-    }
-    else if (yourSum > dealerSum) {
-        message = "You Win! Plus: $" + (betAmount * 2);
+    } else if (yourSum > dealerSum) {
+        message = 'You Win! Plus: $' + (betAmount * 2);
         roundWinLoss = (betAmount * 2);
-        bankRoll = bankRoll + (betAmount * 2);
-        document.getElementById("bankRoll").innerText = "Bankroll: $" + bankRoll;
-        console.log(message);
-
-    }
-    else if (yourSum < dealerSum) {
-        message = "You Lose! Minus: $" + betAmount;
+        bankRoll += (betAmount * 2);
+    } else {
+        message = 'You Lose! Minus: $' + betAmount;
         roundWinLoss = (betAmount * -1);
-        bankRoll = bankRoll - betAmount;
-        document.getElementById("bankRoll").innerText = "Bankroll: $" + bankRoll;
-        console.log(message);
-
+        bankRoll -= betAmount;
     }
 
     calculateNetWinLoss();
-    document.getElementById("dealer-sum").innerText = dealerSum;
-    document.getElementById("your-sum").innerText = yourSum;
-    document.getElementById("results").innerText = message;
+    document.getElementById('dealer-sum').innerText = dealerSum;
+    document.getElementById('your-sum').innerText = yourSum;
+    document.getElementById('results').innerText = message;
 }
 
-document.getElementById("play-again-btn").addEventListener("click", resetGame);
+// play-again event is wired in window.onload
 
 function resetGame() {
+    console.log('blackjack: resetGame');
     console.log("Resetting game...");
     dealerSum = 0;
     yourSum = 0;
@@ -194,6 +265,11 @@ function resetGame() {
     yourAceCount = 0;
     canHit = true;
     roundNumber++;
+    // require a new bet for the next round
+    gameStarted = false;
+    betAmount = 0;
+    dealingStarted = false;
+    betPlaced = false;
 
     document.getElementById("dealer-cards").innerHTML = "";
     document.getElementById("your-cards").innerHTML = "";
@@ -201,24 +277,43 @@ function resetGame() {
     document.getElementById("dealer-sum").innerText = "";
     document.getElementById("your-sum").innerText = "";
 
-    let hiddenCardImg = document.createElement("img");
-    hiddenCardImg.src = "/cards/BACK.png";
-    document.getElementById("dealer-cards").appendChild(hiddenCardImg);
+    // Do not show any cards until the player places a bet
+    var hitBtn = document.getElementById("hit");
+    var standBtn = document.getElementById("stand-btn");
+    if (hitBtn) hitBtn.disabled = true;
+    if (standBtn) standBtn.disabled = true;
+    // Enable bet submit so player can place a new bet
+    var submitBetBtn = document.getElementById('submit-bet');
+    if (submitBetBtn) submitBetBtn.disabled = false;
+    // ensure dealer back-card placeholder is visible after reset
+    var dealerAreaReset = document.getElementById('dealer-cards');
+    if (dealerAreaReset && !document.getElementById('hidden-card-placeholder')) {
+        var row = document.createElement('div');
+        row.className = 'card-row';
+        var placeholderReset = document.createElement('img');
+        placeholderReset.id = 'hidden-card-placeholder';
+        placeholderReset.src = '/ImageBACK.png';
+        row.appendChild(placeholderReset);
+        dealerAreaReset.innerHTML = '';
+        dealerAreaReset.appendChild(row);
+        console.log('blackjack: placeholder added on reset');
+    }
+    // placeholder re-created above; no observer re-attachment needed
 
     document.getElementById("roundNumber").innerText = "Round: " + roundNumber;
     console.log("Round: " + roundNumber);
     console.log("Bankroll: $" + bankRoll);
 
+    // prepare a fresh deck but DO NOT start dealing until bet is submitted
     buildDeck();
     shuffleDeck();
-    startGame();
 
     console.log(yourSum);
 
-    document.getElementById("hit").removeEventListener("click", hit);
-    document.getElementById("stand").removeEventListener("click", stand);
-    document.getElementById("hit").addEventListener("click", hit);
-    document.getElementById("stand").addEventListener("click", stand);
+    var hitEl = document.getElementById("hit");
+    var standEl = document.getElementById("stand-btn");
+    if (hitEl) { hitEl.removeEventListener("click", hit); hitEl.addEventListener("click", hit); }
+    if (standEl) { standEl.removeEventListener("click", stand); standEl.addEventListener("click", stand); }
 }
 
 function getValue(card) {
@@ -267,6 +362,9 @@ function promptBuyIn() {
     bankRoll = buyInAmount;
     document.getElementById("bankRoll").innerText = "Bankroll: $" + bankRoll;
     console.log("Buy-in = $" + buyInAmount);
+    // Enable the Bet button now that buy-in is set
+    var submitBetBtn = document.getElementById('submit-bet');
+    if (submitBetBtn) submitBetBtn.disabled = false;
 }
 
 function calculateNetWinLoss() {
@@ -278,7 +376,6 @@ function calculateNetWinLoss() {
 function dealCardAnimation(containerId, card) {
     let container = document.getElementById(containerId);
     let cardImg = document.createElement("img");
-    cardImg.src = "/cards/" + card + ".png";
     cardImg.classList.add("card");
 
     let cardRow;
@@ -290,6 +387,10 @@ function dealCardAnimation(containerId, card) {
         cardRow = container.lastElementChild;
     }
 
+    // load image with fallback, append immediately
+    const imgSrc = "/cards/" + card + ".png";
+        cardImg.onerror = function () { cardImg.onerror = null; cardImg.src = '/cards/BACK.png'; };
+    cardImg.src = imgSrc;
     cardRow.appendChild(cardImg);
     void cardImg.offsetWidth;
     cardImg.style.animation = "dealAnimation 0.5s forwards";
@@ -299,7 +400,23 @@ function dealCardAnimation(containerId, card) {
         yourAceCount += checkAce(card);
         document.getElementById("your-sum").innerText = yourSum;
     } else if (containerId === "dealer-cards") {
+        // Face-up dealer card: add to faceUp tracker
+        dealerFaceUpSum += getValue(card);
+        dealerFaceUpAceCount += checkAce(card);
         dealerSum += getValue(card);
         dealerAceCount += checkAce(card);
+
+        var ph = document.getElementById('hidden-card-placeholder');
+        if (ph && !revealDealerTotal) {
+            // show partial total like '? + X' where X is faceUp sum
+            var faceUpDisplay = reduceAce(dealerFaceUpSum, dealerFaceUpAceCount);
+            var el = document.getElementById('dealer-sum');
+            el.classList.add('partial');
+            el.innerText = faceUpDisplay;
+        } else if (revealDealerTotal) {
+            var el = document.getElementById('dealer-sum');
+            el.classList.remove('partial');
+            el.innerText = reduceAce(dealerSum, dealerAceCount);
+        }
     }
 }

@@ -1,0 +1,74 @@
+/* The outer wrapper to center it on your page */
+.long-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+/* The actual bar storing the links */
+.long-button {
+    display: flex;
+    flex-direction: column;
+    padding: 120px;
+    gap: 15px;
+    width: 100%;
+    max-width: 400px;
+    background-color: #401537; /* Matches your calendar-container */
+    border: 2px solid #ed1aa3;
+    border-radius: 50px; /* Gives it the "pill" shape */
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(237, 26, 163, 0.3);
+    color: darkred;
+}
+
+    /* Individual link styling */
+    .long-button .nav-item {
+        padding: 12px 30px;
+        color: #ed1aa3;
+        text-decoration: none;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        border-right: 1px solid rgba(237, 26, 163, 0.3);
+    }
+
+        /* Remove the border from the very last link */
+        .long-button .nav-item:last-child {
+            border-right: none;
+        }
+
+        /* Hover effects to match your calendar */
+        .long-button .nav-item:hover {
+            background-color: #ed1aa3;
+            color: #ffffff;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+.btn-outline-primary {
+    color: #ed1aa3;
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+    .btn-outline-primary:hover {
+        color: #f76240;
+        background-color: #1c0c1b;
+        border: 2px solid #f76240;
+    }
+
+@media (max-width: 768px) {
+    .long-button {
+        flex-direction: column;
+        border-radius: 15px; /* Less rounded for vertical look */
+        width: 90%;
+    }
+
+        .long-button .nav-item {
+            border-right: none;
+            border-bottom: 1px solid rgba(237, 26, 163, 0.3);
+            text-align: center;
+        }
+}

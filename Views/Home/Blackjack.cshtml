@@ -15,7 +15,9 @@
             <!-- Dealer Cards and Results -->
             <span id="dealerName">Dealer: <span id="dealer-sum"></span></span>
             <div id="dealer-cards" class="card-area">
-                <img id="hidden" src="/cards/BACK.png">
+                <div class="card-row">
+                    <img src="/cards/BACK.png" id="hidden-card-placeholder">
+                </div>
             </div>
 
             <!-- Player Cards and Results -->
@@ -41,7 +43,7 @@
                     <option value="45">$45</option>
                     <option value="50">$50</option>
                 </select>
-                <button id="submit-bet" onclick="submitBet()">Bet</button>
+                <button id="submit-bet" type="button" onclick="submitBet()">Bet</button>
             </div>
 
             <div class="grid-item"><span id="netWinLoss"></span></div>
@@ -54,7 +56,7 @@
 
     <div class="button-row">
         <button id="hit">Hit</button>
-        <button id="stand">Stand</button>
+        <button id="stand-btn" onclick="stand()">Stand</button>
         <button id="play-again-btn">Play Again</button>
     </div>
 

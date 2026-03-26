@@ -15,17 +15,19 @@
     justify-items: center;
 }
 
-    .card-area {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+.card-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 8px;
+}
 
-    .card-row {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 10px;
-    }
+.card-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
 
     .card {
         width: 100px;
@@ -36,6 +38,7 @@
 #child1-cards {
     grid-row: 1;
     grid-column: 1;
+    border-radius: 8px;
 }
 
     #dealerName {
@@ -161,4 +164,18 @@
 
 .footer {
     margin-top: 300px;
+}
+
+/* Flip animation for placeholder */
+.card-row .card {
+    transition: transform 0.45s;
+}
+
+.card-row .flip {
+    transform: rotateY(180deg);
+}
+
+/* Partial total style */
+#dealer-sum.partial::before {
+    content: "? + ";
 }

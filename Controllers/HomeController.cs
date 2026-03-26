@@ -21,6 +21,12 @@ namespace SIREN.Controllers
             _db = db;
         }
 
+        public IActionResult Portfolio()
+        {
+            return View();
+
+        }
+
         public IActionResult Index()
         {
             return View();

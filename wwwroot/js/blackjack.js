@@ -276,6 +276,7 @@ function resetGame() {
     document.getElementById("results").innerText = "Please submit your bet now.";
     document.getElementById("dealer-sum").innerText = "";
     document.getElementById("your-sum").innerText = "";
+    document.getElementById('hidden-card-placeholder');
 
     // Do not show any cards until the player places a bet
     var hitBtn = document.getElementById("hit");
@@ -287,6 +288,8 @@ function resetGame() {
     if (submitBetBtn) submitBetBtn.disabled = false;
     // ensure dealer back-card placeholder is visible after reset
     var dealerAreaReset = document.getElementById('dealer-cards');
+    var dealerAreaReset = document.getElementById('hidden-card-placeholder');
+
     if (dealerAreaReset && !document.getElementById('hidden-card-placeholder')) {
         var row = document.createElement('div');
         row.className = 'card-row';

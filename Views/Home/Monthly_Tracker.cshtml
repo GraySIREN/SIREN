@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<SIREN.Models.ActivityLog>
+@using System
+@using System.Linq
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -8,11 +11,19 @@
 </head>
 
 <body>
+@{
+    var activities = Model ?? Enumerable.Empty<SIREN.Models.ActivityLog>();
+    int month = ViewBag.Month ?? 3;
+    int year = ViewBag.Year ?? 2026;
+    int daysInMonth = DateTime.DaysInMonth(year, month);
+    int leadingEmpty = (int)new DateTime(year, month, 1).DayOfWeek; // Sunday = 0
+}
+
     <h2>Moon Phases + ()</h2>
     <div class="calendar-container shadow-sm mt-4">
         <div class="calendar-header d-flex justify-content-between align-items-center p-3">
             <button class="btn btn-outline-primary">&lt; Prev</button>
-            <h2 class="mb-0">March 2026</h2>
+            <h2 class="mb-0">@(new DateTime((int)(ViewBag.Year ?? 2026), (int)(ViewBag.Month ?? 3), 1).ToString("MMMM yyyy"))</h2>
             <button class="btn btn-outline-primary">Next &gt;</button>
         </div>
 
@@ -22,20 +33,270 @@
 
         <div class="calendar-grid">
             @* Example: Empty slots for the start of the month (if March starts on Sunday, 0 slots) *@
-            @* We will use 31 placeholder days for this example *@
-            @for (int day = 1; day <= 31; day++)
+            @* Render leading empty slots so calendar aligns to weekdays *@
+            @for (int i = 0; i < leadingEmpty; i++)
             {
-                <div class="calendar-day">
-                    <span class="day-number">@day</span>
-                    <div class="day-content">
-                        @* This is where your tracking data goes *@
-                        @if (day == 15)
-                        {
-                            <span class="badge bg-success">CAD Project Done</span>
-                        }
-                    </div>
-                </div>
+                <div class="calendar-day empty"></div>
+            }
+
+            @* Render the days for the selected month/year *@
+            @for (int day = 1; day <= daysInMonth; day++)
+            {
+                var dt = new DateTime(year, month, day);
+                var dateStr = dt.ToString("yyyy-MM-dd");
+    <div class="calendar-day" 
+         style="cursor: pointer;" 
+         data-date="@dateStr">
+
+        <span class="day-number">@day</span>
+        <div class="day-content">
+            @{
+                var dayActivities = activities.Where(a => a.LogDate.Year == year && a.LogDate.Month == month && a.LogDate.Day == day).ToList();
+            }
+            @foreach (var act in dayActivities)
+            {
+                <div class="activity-item" title="@act.Description" data-id="@act.Id" data-description="@act.Description">@act.ActivityType</div>
+            }
+
+        </div>
+    </div>
             }
         </div>
     </div>
+
+    <div class="modal fade" id="activityModal" tabindex="-1" aria-labelledby="activityModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="background-color: #401537; border: 2px solid #ed1aa3; color: #ed1aa3;">
+            <div class="modal-header border-bottom-0">
+                <h5 class="modal-title" id="activityModalLabel">Add Activity for <span id="selectedDateText"></span></h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="activityForm">
+                    <input type="hidden" id="selectedDateValue" name="date" />
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Activity Type</label>
+                        <select id="activityType" class="form-select bg-dark text-light border-secondary">
+                            <option value="CAD">CAD</option>
+                            <option value="3D Printing">3D Printing</option>
+                            <option value="C# Development">C# Development</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea id="activityDescription" class="form-control bg-dark text-light border-secondary" rows="3" placeholder="What did you create today?"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer border-top-0">
+    <button type="button" class="btn btn-outline-secondary text-light" data-bs-dismiss="modal">Cancel</button>
+    
+    <button type="button" 
+            id="btnSaveActivity" 
+            class="btn btn-outline-primary btnSaveActivity" 
+            style="background-color: #ed1aa3; color: white;">
+        Save Activity
+    </button>
+</div>
+        </div>
+    </div>
+</div>
 </body>
+
+<!-- Activity details modal -->
+<div class="modal fade" id="activityDetailsModal" tabindex="-1" aria-labelledby="activityDetailsLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="background-color: #401537; border: 2px solid #ed1aa3; color: #ed1aa3;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="activityDetailsLabel">Activity Details</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Type:</strong> <span id="detailType"></span></p>
+        <p><strong>Date:</strong> <span id="detailDate"></span></p>
+        <p><strong>Description:</strong></p>
+        <p id="detailDescription"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary text-light" data-bs-dismiss="modal">Close</button>
+        <button type="button" id="btnDeleteActivity" class="btn btn-outline-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        //Attempting to adjust js modal saving to database
+
+<script>
+    // Set the selected date when a calendar day is clicked
+    // Use server-provided month/year for the calendar
+    const calendarYear = @((int)(ViewBag.Year ?? 2026));
+    const calendarMonth = @((int)(ViewBag.Month ?? 3)); // numeric 1-12
+
+    function prepareModal(day) {
+        const padded = String(day).padStart(2, '0');
+        const monthPadded = String(calendarMonth).padStart(2, '0');
+        const dateStr = `${calendarYear}-${monthPadded}-${padded}`; // ISO-like date string
+        document.getElementById('selectedDateValue').value = dateStr;
+        document.getElementById('selectedDateText').textContent = dateStr;
+    }
+
+    // Attach click handler to activity items (using event delegation)
+    document.addEventListener('click', function (ev) {
+        var target = ev.target;
+        if (target.classList && target.classList.contains('activity-item')) {
+            // Show details modal
+            var type = target.textContent || '';
+            var desc = target.getAttribute('data-description') || '';
+            var activityId = target.getAttribute('data-id');
+            var parentDay = target.closest('.calendar-day');
+            var date = parentDay ? parentDay.getAttribute('data-date') : '';
+
+            document.getElementById('detailType').textContent = type;
+            document.getElementById('detailDate').textContent = date;
+            document.getElementById('detailDescription').textContent = desc;
+
+            // store currently-viewed activity id so delete can act on it
+            window._selectedActivityId = activityId;
+
+            var detailsModal = new bootstrap.Modal(document.getElementById('activityDetailsModal'));
+            detailsModal.show();
+        }
+    });
+
+    // Open Add-Activity modal when clicking a day cell, but do NOT open when clicking an existing activity-item
+    document.querySelectorAll('.calendar-day').forEach(function (dayEl) {
+        dayEl.addEventListener('click', function (ev) {
+            // If the click originated from inside an activity-item, don't open the add modal
+            if (ev.target.closest('.activity-item')) return;
+
+            var date = dayEl.getAttribute('data-date');
+            if (!date) return;
+
+            // extract day number from yyyy-mm-dd
+            var parts = date.split('-');
+            var dayNum = parseInt(parts[2], 10);
+            if (isNaN(dayNum)) return;
+
+            prepareModal(dayNum);
+
+            var modalEl = document.getElementById('activityModal');
+            var modal = new bootstrap.Modal(modalEl);
+            modal.show();
+        });
+    });
+
+    function appendActivityToCalendar(activity) {
+        try {
+            var dt = new Date(activity.LogDate);
+            var year = dt.getFullYear();
+            var month = String(dt.getMonth() + 1).padStart(2, '0');
+            var day = String(dt.getDate()).padStart(2, '0');
+            var dateStr = `${year}-${month}-${day}`;
+
+            var dayCell = document.querySelector(`.calendar-day[data-date="${dateStr}"]`);
+            if (!dayCell) return;
+
+            var div = document.createElement('div');
+            div.className = 'activity-item';
+            div.textContent = activity.ActivityType; // preserve casing
+            div.title = activity.Description || '';
+            div.setAttribute('data-description', activity.Description || '');
+            if (activity.Id || activity.id) {
+                // support both Id and id naming from server
+                var aid = activity.Id || activity.id;
+                div.setAttribute('data-id', aid);
+            }
+
+            var content = dayCell.querySelector('.day-content');
+            if (content) content.appendChild(div);
+        } catch (e) {
+            console.error('appendActivityToCalendar error', e);
+        }
+    }
+
+    // Hijack save button to append without reload
+    document.getElementById('btnSaveActivity').addEventListener('click', function (ev) {
+        var activityData = {
+            LogDate: document.getElementById('selectedDateValue').value,
+            ActivityType: document.getElementById('activityType').value,
+            Description: document.getElementById('activityDescription').value
+        };
+
+        fetch('/Home/SaveActivity', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(activityData)
+        })
+        .then(r => r.json())
+        .then(result => {
+            if (result.success && result.activity) {
+                appendActivityToCalendar(result.activity);
+                var modalEl = document.getElementById('activityModal');
+                var modal = bootstrap.Modal.getInstance(modalEl);
+                if (modal) modal.hide();
+                document.getElementById('activityDescription').value = '';
+            } else {
+                alert('Error: ' + (result.message || 'Unable to save'));
+            }
+        })
+        .catch(err => console.error('Save error', err));
+    });
+
+    // Delete activity handler
+    document.getElementById('btnDeleteActivity').addEventListener('click', function () {
+        var id = window._selectedActivityId;
+        if (!id) return;
+
+        if (!confirm('Delete this activity?')) return;
+
+        fetch('/Home/DeleteActivity', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: parseInt(id, 10) })
+        })
+        .then(r => r.json())
+        .then(res => {
+            if (res.success) {
+                // remove element(s) with this data-id
+                document.querySelectorAll('.activity-item[data-id="' + id + '"]').forEach(function (el) {
+                    el.parentNode && el.parentNode.removeChild(el);
+                });
+
+                var detailsModalEl = document.getElementById('activityDetailsModal');
+                var detailsModal = bootstrap.Modal.getInstance(detailsModalEl) || new bootstrap.Modal(detailsModalEl);
+                detailsModal.hide();
+                window._selectedActivityId = null;
+            } else {
+                alert('Unable to delete: ' + (res.message || 'server error'));
+            }
+        })
+        .catch(err => {
+            console.error('Delete error', err);
+            alert('Delete failed');
+        });
+    });
+
+    // Prev/Next navigation
+    (function () {
+        var prevBtn = document.querySelector('.calendar-header .btn-outline-primary:first-child');
+        var nextBtn = document.querySelector('.calendar-header .btn-outline-primary:last-child');
+        var viewYear = @((int)(ViewBag.Year ?? 2026));
+        var viewMonth = @((int)(ViewBag.Month ?? 3));
+
+        prevBtn.addEventListener('click', function () {
+            var y = viewYear; var m = viewMonth - 1;
+            if (m < 1) { m = 12; y -= 1; }
+            window.location.search = `?month=${m}&year=${y}`;
+        });
+
+        nextBtn.addEventListener('click', function () {
+            var y = viewYear; var m = viewMonth + 1;
+            if (m > 12) { m = 1; y += 1; }
+            window.location.search = `?month=${m}&year=${y}`;
+        });
+    })();
+</script>
